@@ -20,6 +20,7 @@ output:
 ## Global options
 knitr::opts_chunk$set(cache = TRUE)
 dane <- read.csv("HR.csv")
+library(tidyverse)
 ```
 # Wprowadzenie
 
