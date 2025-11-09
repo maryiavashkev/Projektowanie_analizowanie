@@ -21,4 +21,13 @@ output:
 knitr::opts_chunk$set(cache = TRUE)
 dane <- read.csv("HR.csv")
 ```
+# Wprowadzenie
+
+Celem raportu jest analiza firmowych danych HR za dany okres. Raport zawiera przegląd najważniejszych wskaźników, wizualizację danych oraz wyciągnięte wnioski. Zbiór danych zawiera `r nrows(dane)` wierszy oraz `r ncols(dane)`
+
+# Opis danych
+
+
+
+
 
