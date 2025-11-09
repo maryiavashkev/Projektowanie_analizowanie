@@ -1,0 +1,23 @@
+---
+title: "Analiza danych_HR"
+author: ""
+date: "`r Sys.Date()`"
+output:
+  rmdformats::robobook:
+    highlight: kate
+    toc: true
+    toc_dephth: 3
+    theme: "red"
+    self_contained: true
+    number_sections: true
+    code_folding: show
+    Fig_width: 8
+    Fig_height: 5
+---
+
+```{r setup, include=FALSE}
+## Global options
+knitr::opts_chunk$set(cache = TRUE)
+dane <- read.csv("HR.csv")
+```
+
