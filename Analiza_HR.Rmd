@@ -29,7 +29,7 @@ Celem raportu jest analiza firmowych danych HR za dany okres. Raport zawiera prz
 
 # Opis danych
 
-
+Dane HR zawierają następujące kolumny:
 
 
 
