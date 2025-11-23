@@ -21,6 +21,7 @@ output:
 knitr::opts_chunk$set(cache = TRUE)
 dane <- read.csv("HR.csv")
 library(tidyverse)
+library(naniar)
 ```
 
 # 1. Wprowadzenie
@@ -77,4 +78,10 @@ Dane HR obejmują następujące kolumny:
 # 2. Porządkowanie i czyszczenie danych 
 
 # 2.1 Braki danych
+
+```{r}
+procent <- prop_complete_var(dane)*100
+```
+
+W danych znajduje sie `r procent` 91.43 % kompletnych wartości.
 
