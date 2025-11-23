@@ -22,12 +22,11 @@ knitr::opts_chunk$set(cache = TRUE)
 dane <- read.csv("HR.csv")
 library(tidyverse)
 library(naniar)
-library(finalfit)
 ```
 
 # 1. Wprowadzenie
 
-Celem raportu jest analiza firmowych danych HR za dany okres. Raport zawiera przegląd najważniejszych wskaźników, wizualizację danych oraz wyciągnięte wnioski. Zbiór danych zawiera `r nrows(dane)` wierszy oraz `r ncols(dane)` kolumny.
+Celem raportu jest analiza firmowych danych HR za dany okres. Raport zawiera przegląd najważniejszych wskaźników, wizualizację danych oraz wyciągnięte wnioski. Zbiór danych zawiera 1470 wierszy oraz 35 kolumn.
 
 # Pytania badawcze
 
@@ -94,7 +93,3 @@ naniar::vis_miss(dane)
 ```{r}
 naniar::gg_miss_upset(dane)
 ```
-
-missing_pattern(dane)
-
-#
