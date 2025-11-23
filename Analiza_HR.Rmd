@@ -26,7 +26,7 @@ library(finalfit)
 
 Celem raportu jest analiza firmowych danych HR za dany okres. Raport zawiera przegląd najważniejszych wskaźników, wizualizację danych oraz wyciągnięte wnioski. Zbiór danych zawiera 1470 wierszy oraz 35 kolumn.
 
-# Pytania badawcze
+## Pytania badawcze
 
 1. Czy nadgodziny i niskie zadowolenie ze środowiska zwiększają ryzyko odejścia pracownika?
 2. Czy pracownicy z niższym miesięcznym wynagrodzeniem lub rzadkimi awansami odchodzą częściej?
@@ -41,7 +41,7 @@ Zmienne w zbiorze danych można podzielić na następujące kategorie:
 
 # 2. Porządkowanie i czyszczenie danych 
 
-# 2.1 Braki danych
+## 2.1 Braki danych
 
 ```{r}
 procent <- prop_complete_var(dane)*100
@@ -53,7 +53,7 @@ W danych znajduje sie `r procent` 91.43 % kompletnych wartości.
 naniar::vis_miss(dane)
 ```
 
-#Wizualizacje połączeń w brakach danych:
+# Wizualizacje połączeń w brakach danych:
 
 ```{r message=FALSE, warning=FALSE}
 naniar::gg_miss_upset(dane)
@@ -62,7 +62,7 @@ naniar::gg_miss_upset(dane)
 
 ```{r message=FALSE, warning=FALSE}
 library(finalfit)
-md_pattern(dane)
+finalfit::missing_pattern(dane)
 ```
 
 
@@ -72,3 +72,17 @@ library(ggplot2)
 ggplot(dane,aes(x=Age, y=MonthlyIncome)) + geom_miss_point() + 
   labs(tittle="Wzorce braków danych w HR", x="Age" , y="MonthlyIncome ()")
 ```
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+wykres<-finalfit::missing_pattern(dane)
+wykres
+```
+# Inputacja metodą Hot-Deck
+```{r}
+
+```
+
+# Walidacja danych
+```{r}
+
+```
+
