@@ -86,3 +86,10 @@ wykres
 
 ```
 
+Reguły walidacji danych:
+  1. Staż w firmie (YearsAtCompany) musi być mniejszy lub równy całkowitemu stażowi pracy (TotalWorkingYears). 
+  2. Czas na obecnym stanowisku (YearsInCurrentRole) musi być mniejszy lub równy stażowi w firmie (YearsAtCompany).
+  3. Czas pracy z obecnym menedżerem (YearsWithCurrManager) musi być mniejszy lub równy stażowi w firmie (YearsAtCompany).
+  4. Lata od ostatniego awansu (YearsSinceLastPromotion) muszą być mniejsze lub równe stażowi w firmie (YearsAtCompany).
+  5. Numer pracownika (EmployeeNumber) musi być unikalny dla każdego wiersza.
+
