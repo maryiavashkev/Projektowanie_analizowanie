@@ -1669,6 +1669,35 @@ pracowników?</li>
 firmy.</p>
 <p>Zmienne w zbiorze danych można podzielić na następujące
 kategorie:</p>
+<p>Zmienna Objaśniana: Attrition: Zmienna kategoryczna wskazująca na to,
+czy pracownik odszedł z firmy.</p>
+<p>Zmienne Demograficzne i Osobiste: Age: Wiek pracownika (Lata) Gender:
+Płeć pracownika. MaritalStatus: Stan cywilny (Single, Married,
+Divorced). Education: Poziom wykształcenia (1-5). EducationField:
+Dziedzina wykształcenia (np. Life Sciences, Medical). DistanceFromHome:
+Odległość od domu.</p>
+<p>Zmienne Związane z Pracą oraz Rolą: Department: Dział, w którym
+pracuje dana osoba (Sales, R&amp;D, HR). JobRole: Konkretne stanowisko,
+które zajmuję dana osoba (np. Sales Executive, Laboratory Technician).
+JobLevel: Poziom stanowiska w strukturze firmy. BusinessTravel:
+Częstotliwość podróży służbowych (Rarely, Frequently, Non-Travel).
+OverTime: Czy pracownik pracuje w godzinach ponadwymiarowych
+(Yes/No).</p>
+<p>Wynagrodzenie i Benefity: MonthlyIncome: Miesięczne wynagrodzenie.
+DailyRate, HourlyRate, MonthlyRate: Stawki płacowe w różnych ujęciach
+czasowych. PercentSalaryHike: Procentowa podwyżka wynagrodzenia.
+StockOptionLevel: Poziom opcji na akcje pracownicze.</p>
+<p>Satysfakcja i Oceny: EnvironmentSatisfaction: Zadowolenie ze
+środowiska pracy. JobSatisfaction: Zadowolenie z wykonywanej pracy.
+WorkLifeBalance: Ocena równowagi między życiem zawodowym a prywatnym.
+RelationshipSatisfaction: Satysfakcja z relacji ze współpracownikami.
+PerformanceRating: Ocena wydajności pracownika.</p>
+<p>Historia Zatrudnienia: TotalWorkingYears: Całkowity staż pracy
+(lata). YearsAtCompany: Liczba lat przepracowanych w obecnej firmie.
+YearsInCurrentRole: Czas na obecnym stanowisku (lata).
+YearsSinceLastPromotion: Czas, który upłynął od ostatniego awansu
+(lata). YearsWithCurrManager: Czas pracy z obecnym menedżerem
+(lata).</p>
 </div>
 <div id="porządkowanie-i-czyszczenie-danych" class="section level1" number="3">
 <h1><span class="header-section-number">3</span> 2. Porządkowanie i
@@ -1861,6 +1890,15 @@ Hot-Deck</h1>
 </div>
 <div id="walidacja-danych" class="section level1" number="6">
 <h1><span class="header-section-number">6</span> Walidacja danych</h1>
+<p>Reguły walidacji danych: 1. Staż w firmie (YearsAtCompany) musi być
+mniejszy lub równy całkowitemu stażowi pracy (TotalWorkingYears). 2.
+Czas na obecnym stanowisku (YearsInCurrentRole) musi być mniejszy lub
+równy stażowi w firmie (YearsAtCompany). 3. Czas pracy z obecnym
+menedżerem (YearsWithCurrManager) musi być mniejszy lub równy stażowi w
+firmie (YearsAtCompany). 4. Lata od ostatniego awansu
+(YearsSinceLastPromotion) muszą być mniejsze lub równe stażowi w firmie
+(YearsAtCompany). 5. Numer pracownika (EmployeeNumber) musi być unikalny
+dla każdego wiersza.</p>
 </div>
 
    
