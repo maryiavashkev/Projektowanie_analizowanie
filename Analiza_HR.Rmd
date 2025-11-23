@@ -88,3 +88,8 @@ W danych znajduje sie `r procent` 91.43 % kompletnych wartości.
 ```{r}
 naniar::vis_miss(dane)
 ```
+#Wizualizacje połączeń w brakach danych:
+
+```{r}
+naniar::gg_miss_upset(dane)
+```
