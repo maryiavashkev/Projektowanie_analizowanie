@@ -74,7 +74,7 @@ Dane HR obejmują następujące kolumny:
 34.	YearsSinceLastPromotion	-	Lata od ostatniego awansu
 35.	YearsWithCurrManager	-	Lata współpracy z obecnym przełożonym
 
-# 2. Porządkowanie i czysczenie danych 
+# 2. Porządkowanie i czyszczenie danych 
 
 # 2.1 Braki danych
 
