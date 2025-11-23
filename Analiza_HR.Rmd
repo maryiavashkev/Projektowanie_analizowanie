@@ -5,9 +5,6 @@ date: "`r Sys.Date()`"
 output:
   rmdformats::robobook:
     highlight: kate
-    toc: true
-    toc_dephth: 3
-    theme: "red"
     self_contained: true
     number_sections: true
     code_folding: show
@@ -55,11 +52,23 @@ W danych znajduje sie `r procent` 91.43 % kompletnych wartości.
 ```{r}
 naniar::vis_miss(dane)
 ```
+
 #Wizualizacje połączeń w brakach danych:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 naniar::gg_miss_upset(dane)
 ```
 
-missing_pattern(dane)
 
+```{r message=FALSE, warning=FALSE}
+library(finalfit)
+md_pattern(dane)
+```
+
+
+
+```{r message=FALSE, warning=FALSE}
+library(ggplot2)
+ggplot(dane,aes(x=Age, y=MonthlyIncome)) + geom_miss_point() + 
+  labs(tittle="Wzorce braków danych w HR", x="Age" , y="MonthlyIncome ()")
+```
