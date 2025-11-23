@@ -93,3 +93,6 @@ naniar::vis_miss(dane)
 ```{r}
 naniar::gg_miss_upset(dane)
 ```
+
+missing_pattern(dane)
+
