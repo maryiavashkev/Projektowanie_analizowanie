@@ -22,6 +22,7 @@ knitr::opts_chunk$set(cache = TRUE)
 dane <- read.csv("HR.csv")
 library(tidyverse)
 library(naniar)
+library(finalfit)
 ```
 
 # 1. Wprowadzenie
