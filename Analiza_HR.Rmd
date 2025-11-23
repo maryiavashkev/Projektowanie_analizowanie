@@ -38,43 +38,9 @@ Celem raportu jest analiza firmowych danych HR za dany okres. Raport zawiera prz
 
 # Opis danych
 
-Dane HR obejmują następujące kolumny:
+Analizowany zbiór danych zawiera informacje dotyczące pracowników firmy.
 
-1.	Age	-	Wiek
-2.	Attrition	-	Odejście z firmy
-3.	BusinessTravel	-	Podróże służbowe
-4.	DailyRate	-	Dzienne wynagrodzenie
-5.	Department	-	Dział
-6.	DistanceFromHome	-	Odległość od domu
-7.	Education	-	Wykształcenie
-8.	EducationField	-	Kierunek wykształcenia
-9.	EmployeeCount	-	Liczba pracowników
-10.	EmployeeNumber	-	Numer pracownika
-11.	EnvironmentSatisfaction	-	Satysfakcja ze środowiska pracy
-12.	Gender	-	Płeć
-13.	HourlyRate	-	Stawka godzinowa
-14.	JobInvolvement	-	Zaangażowanie w pracę
-15.	JobLevel	-	Poziom stanowiska
-16.	JobRole	-	Rola w pracy
-17.	JobSatisfaction	-	Satysfakcja z pracy
-18.	MaritalStatus	-	Stan cywilny
-19.	MonthlyIncome	-	Miesięczne wynagrodzenie
-20.	MonthlyRate	-	Miesięczna stawka
-21.	NumCompaniesWorked	-	Liczba firm, w których pracował(a)
-22.	Over18	-	Powyżej 18 lat
-23.	OverTime	-	Nadgodziny
-24.	PercentSalaryHike	-	Procentowa podwyżka wynagrodzenia
-25.	PerformanceRating	-	Ocena wydajności
-26.	RelationshipSatisfaction	-	Satysfakcja z relacji w pracy
-27.	StandardHours	-	Standardowe godziny pracy
-28.	StockOptionLevel	-	Poziom opcji na akcje
-29.	TotalWorkingYears	-	Łączny staż pracy
-30.	TrainingTimesLastYear	-	Liczba szkoleń w ostatnim roku
-31.	WorkLifeBalance	-	Równowaga między pracą a życiem prywatnym
-32.	YearsAtCompany	-	Lata w firmie
-33.	YearsInCurrentRole	-	Lata na obecnym stanowisku
-34.	YearsSinceLastPromotion	-	Lata od ostatniego awansu
-35.	YearsWithCurrManager	-	Lata współpracy z obecnym przełożonym
+Zmienne w zbiorze danych można podzielić na następujące kategorie:
 
 # 2. Porządkowanie i czyszczenie danych 
 
