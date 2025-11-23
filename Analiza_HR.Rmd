@@ -39,6 +39,43 @@ Analizowany zbiór danych zawiera informacje dotyczące pracowników firmy.
 
 Zmienne w zbiorze danych można podzielić na następujące kategorie:
 
+  Zmienna Objaśniana:
+  Attrition: Zmienna kategoryczna wskazująca na to, czy pracownik odszedł z firmy.
+
+  Zmienne Demograficzne i Osobiste:
+  Age: Wiek pracownika (Lata)
+  Gender: Płeć pracownika.
+  MaritalStatus: Stan cywilny (Single, Married, Divorced). 
+  Education: Poziom wykształcenia (1-5). 
+  EducationField: Dziedzina wykształcenia (np. Life Sciences, Medical). 
+  DistanceFromHome: Odległość od domu.
+
+  Zmienne Związane z Pracą oraz Rolą:
+  Department: Dział, w którym pracuje dana osoba (Sales, R&D, HR). 
+  JobRole: Konkretne stanowisko, które zajmuję dana osoba (np. Sales Executive, Laboratory Technician). 
+  JobLevel: Poziom stanowiska w strukturze firmy. 
+  BusinessTravel: Częstotliwość podróży służbowych (Rarely, Frequently, Non-Travel). 
+  OverTime: Czy pracownik pracuje w godzinach ponadwymiarowych (Yes/No).
+  
+  Wynagrodzenie i Benefity:
+  MonthlyIncome: Miesięczne wynagrodzenie. 
+  DailyRate, HourlyRate, MonthlyRate: Stawki płacowe w różnych ujęciach czasowych. 
+  PercentSalaryHike: Procentowa podwyżka wynagrodzenia. 
+  StockOptionLevel: Poziom opcji na akcje pracownicze.
+  
+  Satysfakcja i Oceny:
+  EnvironmentSatisfaction: Zadowolenie ze środowiska pracy. 
+  JobSatisfaction: Zadowolenie z wykonywanej pracy. 
+  WorkLifeBalance: Ocena równowagi między życiem zawodowym a prywatnym. RelationshipSatisfaction: Satysfakcja z relacji ze współpracownikami. 
+  PerformanceRating: Ocena wydajności pracownika.
+  
+  Historia Zatrudnienia:
+  TotalWorkingYears: Całkowity staż pracy (lata). 
+  YearsAtCompany: Liczba lat przepracowanych w obecnej firmie. 
+  YearsInCurrentRole: Czas na obecnym stanowisku (lata).
+  YearsSinceLastPromotion: Czas, który upłynął od ostatniego awansu (lata). 
+  YearsWithCurrManager: Czas pracy z obecnym menedżerem (lata).
+
 # 2. Porządkowanie i czyszczenie danych 
 
 ## 2.1 Braki danych
