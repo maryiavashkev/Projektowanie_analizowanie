@@ -113,9 +113,13 @@ ggplot(dane,aes(x=Age, y=MonthlyIncome)) + geom_miss_point() +
 wykres<-finalfit::missing_pattern(dane)
 wykres
 ```
-# Inputacja metodą Hot-Deck
-```{r}
 
+# Inputacja metodą Hot-Deck
+
+```{r}
+library(VIM)
+dane <- hotdeck(dane)
+naniar::vis_miss(dane)
 ```
 
 # Walidacja danych
