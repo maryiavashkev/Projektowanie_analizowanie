@@ -85,3 +85,6 @@ procent <- prop_complete_var(dane)*100
 
 W danych znajduje sie `r procent` 91.43 % kompletnych wartości.
 
+```{r}
+naniar::vis_miss(dane)
+```
