@@ -143,7 +143,7 @@ Reguły walidacji danych:
 Pora zobaczyc czy zbior danych cos tam
 
 ```{r}
-cf <- confront(dane, rules, key="YearsAtCompany")
+cf <- confront(dane, rules, key="EmployeeNumber")
 
 barplot(cf)
 
