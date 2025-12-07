@@ -202,3 +202,42 @@ ggplot(dane, aes(x = Department, y = MonthlyIncome, fill = JobLevel)) +
   )
 ```
 
+```{r}
+library(ggplot2)
+library(dplyr)
+
+set.seed(123)
+data <- data.frame(
+  Gender = sample(c("Female", "Male"), 200, replace = TRUE),
+  JobSatisfaction = sample(1:4, 200, replace = TRUE), 
+  OverTime = sample(c("Yes", "No"), 200, replace = TRUE)
+)
+data$JobSatisfaction <- factor(data$JobSatisfaction, 
+                               levels = c(1, 2, 3, 4),
+                               labels = c("Low", "Medium", "High", "Very High"))
+
+ggplot(data, aes(x = JobSatisfaction, fill = Gender)) +
+
+  geom_bar(position = "dodge", color = "white", alpha = 0.9) +
+
+  facet_wrap(~OverTime, labeller = label_both) +
+
+  scale_fill_manual(values = c("Female" = "#6BAED6", "Male" = "#08519C")) +
+
+  labs(
+    title = "Poziom satysfakcji z pracy a płeć i nadgodziny",
+    x = "Satysfakcja z pracy",
+    y = "Liczba pracowników",
+    fill = "Płeć"
+  ) +
+
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold", size = 16),
+    legend.position = "right", 
+    panel.grid.major.x = element_blank(), 
+    strip.background = element_rect(fill = "#E6F5FF", color = NA), 
+    strip.text = element_text(color = "black", face = "bold")
+  )
+```
+
