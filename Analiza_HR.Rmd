@@ -149,3 +149,56 @@ barplot(cf)
 
 ```
 
+# Wizualizacja danych
+
+```{r warning=FALSE}
+library(ggplot2)
+library(scales)
+
+
+ggplot(dane, aes(x = Department, y = MonthlyIncome, fill = Department)) +
+  stat_summary(fun = "mean", geom = "bar", color = "black", width = 0.7) +
+  stat_summary(fun = "mean", geom = "text", 
+               aes(label = number(..y.., big.mark = " ", accuracy = 1)), 
+               vjust = -0.5, size = 4) +
+  scale_y_continuous(labels = comma_format(big.mark = " ", decimal.mark = ","),
+                     expand = expansion(mult = c(0, 0.15))) + 
+  scale_fill_brewer(palette = "Blues") +
+  labs(title = "Średnie wynagrodzenie wg Działu",
+       x = "Dział",
+       y = "Średni miesięczny dochód") +
+  theme_minimal() +
+  theme(
+    legend.position = "none",
+    panel.grid.major.x = element_blank(), 
+    plot.title = element_text(face = "bold", size = 16),
+    axis.text.x = element_text(size = 11, color = "black")
+  )
+  
+```
+
+```{r warning=FALSE}
+library(ggplot2)
+library(scales)
+
+dane$JobLevel <- as.factor(dane$JobLevel)
+
+ggplot(dane, aes(x = Department, y = MonthlyIncome, fill = JobLevel)) +
+
+  geom_boxplot(color = "black", alpha = 0.8, outlier.shape = 20) +
+
+  scale_fill_brewer(palette = "Blues", name = "Poziom (JobLevel)") +
+
+  scale_y_continuous(labels = comma_format(big.mark = " ", decimal.mark = ",")) +
+
+  labs(title = "Zarobki w Działach wg Poziomu Stanowiska",
+       x = "Dział (Department)",
+       y = "Miesięczny dochód") +
+
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold", size = 14),
+    legend.position = "right" 
+  )
+```
+
