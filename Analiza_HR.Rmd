@@ -25,13 +25,11 @@ library(validate)
 
 # 1. Wprowadzenie
 
-Celem raportu jest analiza firmowych danych HR za dany okres. Raport składa się z sze
-Wprowadzenie
-Data Cleansing, Wrangling
-Wizualizację Danych
-Analizę Opisową
-Wnioskowanie (testy statystyczne)
-Podsumowanie i wnioski końcowe Zbiór danych zawiera 1470 wierszy oraz 35 kolumn.
+Celem raportu jest analiza firmowych danych HR. [place holder na rozbudowanie na koniec].
+
+Raport składa się z: wprowadzenia, data cleansing oraz data wrangling, wizualizacji danych, wnioskowania (testy statystyczne) oraz podsumowania i wniosków końcowych.
+
+Zbiór danych zawiera 1470 wierszy oraz 35 kolumn.
 
 ## Pytania badawcze
 
