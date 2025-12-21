@@ -29,10 +29,10 @@ Celem raportu jest analiza firmowych danych HR za dany okres. Raport zawiera prz
 
 ## Pytania badawcze
 
-1. Czy nadgodziny i niskie zadowolenie ze środowiska zwiększają ryzyko odejścia pracownika?
-2. Czy pracownicy z niższym miesięcznym wynagrodzeniem lub rzadkimi awansami odchodzą częściej?
-3. Jaka jest charakterystyka (wiek, staż pracy) pracownika, który najczęściej decyduje się na odejście?
-4. Które działy oraz stanowiska są najbardziej narażone na odejścia pracowników?
+1.  Czy nadgodziny i niskie zadowolenie ze środowiska zwiększają ryzyko odejścia pracownika?
+2.  Czy pracownicy z niższym miesięcznym wynagrodzeniem lub rzadkimi awansami odchodzą częściej?
+3.  Jaka jest charakterystyka (wiek, staż pracy) pracownika, który najczęściej decyduje się na odejście?
+4.  Które działy oraz stanowiska są najbardziej narażone na odejścia pracowników?
 
 # Opis danych
 
@@ -40,45 +40,19 @@ Analizowany zbiór danych zawiera informacje dotyczące pracowników firmy.
 
 Zmienne w zbiorze danych można podzielić na następujące kategorie:
 
-Zmienna Objaśniana:
-Attrition: Zmienna kategoryczna wskazująca na to, czy pracownik odszedł z firmy.
+Zmienna Objaśniana: Attrition: Zmienna kategoryczna wskazująca na to, czy pracownik odszedł z firmy.
 
-Zmienne Demograficzne i Osobiste:
-Age: Wiek pracownika (Lata)
-Gender: Płeć pracownika.
-MaritalStatus: Stan cywilny (Single, Married, Divorced). 
-Education: Poziom wykształcenia (1-5). 
-EducationField: Dziedzina wykształcenia (np. Life Sciences, Medical). 
-DistanceFromHome: Odległość od domu.
+Zmienne Demograficzne i Osobiste: Age: Wiek pracownika (Lata) Gender: Płeć pracownika. MaritalStatus: Stan cywilny (Single, Married, Divorced). Education: Poziom wykształcenia (1-5). EducationField: Dziedzina wykształcenia (np. Life Sciences, Medical). DistanceFromHome: Odległość od domu.
 
-Zmienne Związane z Pracą oraz Rolą:
-Department: Dział, w którym pracuje dana osoba (Sales, R&D, HR). 
-JobRole: Konkretne stanowisko, które zajmuję dana osoba (np. Sales Executive, Laboratory Technician). 
-JobLevel: Poziom stanowiska w strukturze firmy. 
-BusinessTravel: Częstotliwość podróży służbowych (Rarely, Frequently, Non-Travel). 
-OverTime: Czy pracownik pracuje w godzinach ponadwymiarowych (Yes/No).
+Zmienne Związane z Pracą oraz Rolą: Department: Dział, w którym pracuje dana osoba (Sales, R&D, HR). JobRole: Konkretne stanowisko, które zajmuję dana osoba (np. Sales Executive, Laboratory Technician). JobLevel: Poziom stanowiska w strukturze firmy. BusinessTravel: Częstotliwość podróży służbowych (Rarely, Frequently, Non-Travel). OverTime: Czy pracownik pracuje w godzinach ponadwymiarowych (Yes/No).
 
-Wynagrodzenie i Benefity:
-MonthlyIncome: Miesięczne wynagrodzenie. 
-DailyRate, HourlyRate, MonthlyRate: Stawki płacowe w różnych ujęciach czasowych. 
-PercentSalaryHike: Procentowa podwyżka wynagrodzenia. 
-StockOptionLevel: Poziom opcji na akcje pracownicze.
+Wynagrodzenie i Benefity: MonthlyIncome: Miesięczne wynagrodzenie. DailyRate, HourlyRate, MonthlyRate: Stawki płacowe w różnych ujęciach czasowych. PercentSalaryHike: Procentowa podwyżka wynagrodzenia. StockOptionLevel: Poziom opcji na akcje pracownicze.
 
-Satysfakcja i Oceny:
-EnvironmentSatisfaction: Zadowolenie ze środowiska pracy. 
-JobSatisfaction: Zadowolenie z wykonywanej pracy. 
-WorkLifeBalance: Ocena równowagi między życiem zawodowym a prywatnym. RelationshipSatisfaction: Satysfakcja z relacji ze współpracownikami. 
-PerformanceRating: Ocena wydajności pracownika.
+Satysfakcja i Oceny: EnvironmentSatisfaction: Zadowolenie ze środowiska pracy. JobSatisfaction: Zadowolenie z wykonywanej pracy. WorkLifeBalance: Ocena równowagi między życiem zawodowym a prywatnym. RelationshipSatisfaction: Satysfakcja z relacji ze współpracownikami. PerformanceRating: Ocena wydajności pracownika.
 
-Historia Zatrudnienia:
-TotalWorkingYears: Całkowity staż pracy (lata). 
-YearsAtCompany: Liczba lat przepracowanych w obecnej firmie. 
-YearsInCurrentRole: Czas na obecnym stanowisku (lata).
-YearsSinceLastPromotion: Czas, który upłynął od ostatniego awansu (lata). 
-YearsWithCurrManager: Czas pracy z obecnym menedżerem (lata).
+Historia Zatrudnienia: TotalWorkingYears: Całkowity staż pracy (lata). YearsAtCompany: Liczba lat przepracowanych w obecnej firmie. YearsInCurrentRole: Czas na obecnym stanowisku (lata). YearsSinceLastPromotion: Czas, który upłynął od ostatniego awansu (lata). YearsWithCurrManager: Czas pracy z obecnym menedżerem (lata).
 
-
-# 2. Porządkowanie i czyszczenie danych 
+# 2. Porządkowanie i czyszczenie danych
 
 ## 2.1 Braki danych
 
@@ -98,19 +72,17 @@ naniar::vis_miss(dane)
 naniar::gg_miss_upset(dane)
 ```
 
-
 ```{r message=FALSE, warning=FALSE}
 library(finalfit)
 finalfit::missing_pattern(dane)
 ```
-
-
 
 ```{r message=FALSE, warning=FALSE}
 library(ggplot2)
 ggplot(dane,aes(x=Age, y=MonthlyIncome)) + geom_miss_point() + 
   labs(tittle="Wzorce braków danych w HR", x="Age" , y="MonthlyIncome ()")
 ```
+
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 wykres<-finalfit::missing_pattern(dane)
 wykres
@@ -125,6 +97,7 @@ naniar::vis_miss(dane)
 ```
 
 # Walidacja danych
+
 ```{r}
 rules <- validator(
 YearsAtCompany <= TotalWorkingYears
@@ -134,11 +107,7 @@ YearsAtCompany <= TotalWorkingYears
 )
 ```
 
-Reguły walidacji danych:
-  1. Staż w firmie (YearsAtCompany) musi być mniejszy lub równy całkowitemu stażowi pracy (TotalWorkingYears). 
-  2. Czas na obecnym stanowisku (YearsInCurrentRole) musi być mniejszy lub równy stażowi w firmie (YearsAtCompany).
-  3. Czas pracy z obecnym menedżerem (YearsWithCurrManager) musi być mniejszy lub równy stażowi w firmie (YearsAtCompany).
-  4. Lata od ostatniego awansu (YearsSinceLastPromotion) muszą być mniejsze lub równe stażowi w firmie (YearsAtCompany).
+Reguły walidacji danych: 1. Staż w firmie (YearsAtCompany) musi być mniejszy lub równy całkowitemu stażowi pracy (TotalWorkingYears). 2. Czas na obecnym stanowisku (YearsInCurrentRole) musi być mniejszy lub równy stażowi w firmie (YearsAtCompany). 3. Czas pracy z obecnym menedżerem (YearsWithCurrManager) musi być mniejszy lub równy stażowi w firmie (YearsAtCompany). 4. Lata od ostatniego awansu (YearsSinceLastPromotion) muszą być mniejsze lub równe stażowi w firmie (YearsAtCompany).
 
 Pora zobaczyc czy zbior danych cos tam
 
@@ -240,4 +209,3 @@ ggplot(data, aes(x = JobSatisfaction, fill = Gender)) +
     strip.text = element_text(color = "black", face = "bold")
   )
 ```
-
