@@ -31,14 +31,14 @@ Raport składa się z: wprowadzenia, data cleansing oraz data wrangling, wizuali
 
 Zbiór danych zawiera 1470 wierszy oraz 35 kolumn.
 
-## Pytania badawcze
+## 1.1 Pytania badawcze
 
 1.  Czy nadgodziny i niskie zadowolenie ze środowiska zwiększają ryzyko odejścia pracownika?
 2.  Czy pracownicy z niższym miesięcznym wynagrodzeniem lub rzadkimi awansami odchodzą częściej?
 3.  Jaka jest charakterystyka (wiek, staż pracy) pracownika, który najczęściej decyduje się na odejście?
 4.  Które działy oraz stanowiska są najbardziej narażone na odejścia pracowników?
 
-# Opis danych
+## 1.2 Opis danych
 
 Analizowany zbiór danych zawiera informacje dotyczące pracowników firmy.
 
@@ -70,7 +70,7 @@ W danych znajduje sie `r procent` 91.43 % kompletnych wartości.
 naniar::vis_miss(dane)
 ```
 
-# Wizualizacje połączeń w brakach danych:
+## 2.2 Wizualizacje połączeń w brakach danych
 
 ```{r message=FALSE, warning=FALSE}
 naniar::gg_miss_upset(dane)
@@ -92,7 +92,7 @@ wykres<-finalfit::missing_pattern(dane)
 wykres
 ```
 
-# Inputacja metodą Hot-Deck
+## 2.3 Inputacja metodą Hot-Deck
 
 ```{r}
 library(VIM)
@@ -100,7 +100,7 @@ dane <- hotdeck(dane)
 naniar::vis_miss(dane)
 ```
 
-# Walidacja danych
+# 3. Walidacja danych
 
 ```{r}
 rules <- validator(
@@ -122,7 +122,7 @@ barplot(cf)
 
 ```
 
-# Wizualizacja danych
+# 4. Wizualizacja danych
 
 ```{r warning=FALSE}
 library(ggplot2)
@@ -213,11 +213,8 @@ ggplot(data, aes(x = JobSatisfaction, fill = Gender)) +
     strip.text = element_text(color = "black", face = "bold")
   )
 ```
-<<<<<<< HEAD
-=======
 
-
-#Statystyki Opisowe
+# 5. Statystyki Opisowe
 
 ```{r}
 library(dplyr)
