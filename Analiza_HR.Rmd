@@ -365,5 +365,3 @@ ggbarstats(
 ```
 
 
-
->>>>>>> ecd9ba1e681b02a5627abeb83b486770179ceae9
