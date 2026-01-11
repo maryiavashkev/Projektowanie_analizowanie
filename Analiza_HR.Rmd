@@ -100,6 +100,17 @@ dane <- hotdeck(dane)
 naniar::vis_miss(dane)
 ```
 
+## 2.4 Analiza wartości odstających
+
+# Sprawdzamy kluczowe zmienne numeryczne pod kątem "outlierów"
+```{r}
+par(mfrow=c(1,3)) # Ustawienie 3 wykresów w jednym rzędzie
+boxplot(dane$MonthlyIncome, main = "Miesięczne Wynagrodzenie", col = "lightblue")
+boxplot(dane$TotalWorkingYears, main = "Staż Pracy", col = "lightgreen")
+boxplot(dane$Age, main = "Wiek", col = "salmon")
+par(mfrow=c(1,1)) # Reset ustawień
+```
+
 # 3. Walidacja danych
 
 ```{r}
