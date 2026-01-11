@@ -1846,6 +1846,20 @@ margin-left: 0 !important;
           <li><a href="#testy-normalno%C5%9Bci-rozk%C5%82adu" id="toc-testy-normalności-rozkładu"><span class="toc-section-number">7.1</span> Testy normalności
           rozkładu</a></li>
           </ul></li>
+          <li><a href="#odpowied%C5%BA-na-pytanie-badawcze-nr-1-wp%C5%82yw-nadgodzin-i-%C5%9Brodowiska" id="toc-odpowiedź-na-pytanie-badawcze-nr-1-wpływ-nadgodzin-i-środowiska"><span class="toc-section-number">8</span> Odpowiedź na pytanie
+          badawcze nr 1: Wpływ nadgodzin i środowiska</a>
+          <ul>
+          <li><a href="#czy-nadgodziny-overtime-zwi%C4%99kszaj%C4%85-rotacj%C4%99" id="toc-czy-nadgodziny-overtime-zwiększają-rotację"><span class="toc-section-number">8.1</span> Czy nadgodziny
+          (OverTime) zwiększają rotację?</a></li>
+          <li><a href="#czy-zadowolenie-ze-%C5%9Brodowiska-environmentsatisfaction-ma-znaczenie" id="toc-czy-zadowolenie-ze-środowiska-environmentsatisfaction-ma-znaczenie"><span class="toc-section-number">8.2</span> Czy zadowolenie ze
+          środowiska (EnvironmentSatisfaction) ma znaczenie?</a></li>
+          </ul></li>
+          <li><a href="#odpowied%C5%BA-na-pytanie-badawcze-nr-2-finanse-a-odej%C5%9Bcia" id="toc-odpowiedź-na-pytanie-badawcze-nr-2-finanse-a-odejścia"><span class="toc-section-number">9</span> Odpowiedź na pytanie
+          badawcze nr 2: Finanse a odejścia</a></li>
+          <li><a href="#odpowied%C5%BA-na-pytanie-badawcze-nr-3-profil-demograficzny-wiek" id="toc-odpowiedź-na-pytanie-badawcze-nr-3-profil-demograficzny-wiek"><span class="toc-section-number">10</span> Odpowiedź na pytanie
+          badawcze nr 3: Profil demograficzny (Wiek)</a></li>
+          <li><a href="#odpowied%C5%BA-na-pytanie-badawcze-nr-4-analiza-dzia%C5%82%C3%B3w-departments" id="toc-odpowiedź-na-pytanie-badawcze-nr-4-analiza-działów-departments"><span class="toc-section-number">11</span> Odpowiedź na pytanie
+          badawcze nr 4: Analiza Działów (Departments)</a></li>
           </ul>
         </nav>
         <ul class="authors">
@@ -1882,18 +1896,21 @@ margin-left: 0 !important;
 <!-- Don't indent these lines or it will mess pre blocks indentation --> 
 <div id="wprowadzenie" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Wprowadzenie</h1>
-<p>Celem raportu jest analiza firmowych danych HR. Rotacja pracowników
-jest jednym z kosztowniejszych problemów dla działów HR. Koszt
-rekrutacji, wdrożenia i utraconej produktywności może wynosić od 50% do
-200% rocznego wynagrodzenia pracownika.</p>
-<p>Celem tego raportu jest zidentyfikowanie kluczowych czynników
-wpływających na decyzję o odejściu (nadgodziny, wynagrodzenie, wiek,
-środowisko pracy), aby umożliwić firmie podjęcie działań prewencyjnych i
-zatrzymanie kluczowych talentów.</p>
-<p>Raport składa się z: wprowadzenia, data cleansing oraz data
-wrangling, wizualizacji danych, wnioskowania (testy statystyczne) oraz
-podsumowania i wniosków końcowych.</p>
-<p>Zbiór danych zawiera 1470 wierszy oraz 35 kolumn.</p>
+<p><strong>Cel projektu:</strong> Celem niniejszego projektu jest
+analiza zbioru danych HR pod kątem identyfikacji przyczyn rotacji
+pracowników. Jest to kluczowe zagadnienie biznesowe - koszty związane z
+rekrutacją i onboardingiem (wraz z utraconą produktywnością) szacuje się
+na 50–200% rocznego wynagrodzenia.</p>
+<p><strong>Zakres analizy:</strong> W projekcie zwrócona została
+szczególna uwaga na znalezienie zależności między odejściem pracownika a
+zmiennymi takimi jak: nadgodziny, wynagrodzenie, wiek czy środowisko
+pracy. Analiza ma na celu wskazanie obszarów, które wymagają działań
+prewencyjnych.</p>
+<p><strong>Struktura raportu:</strong> Raport składa się z:
+wprowadzenia, data cleansing oraz data wrangling, wizualizacji danych,
+wnioskowania oraz podsumowania i wniosków końcowych.</p>
+<p><strong>Dane:</strong> Zbiór danych zawiera 1470 wierszy oraz 35
+kolumn.</p>
 <div id="pytania-badawcze" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> Pytania badawcze</h2>
 <p>I - Czy nadgodziny i niskie zadowolenie ze środowiska zwiększają
@@ -2596,8 +2613,14 @@ sprawdzamy rozkład zmiennej <code>MonthlyIncome</code>.</p>
 <span id="cb40-5"><a href="#cb40-5" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Rozkład jest normalny.&quot;</span>)</span>
 <span id="cb40-6"><a href="#cb40-6" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;Odrzucamy hipotezę o normalności rozkładu. Do analizy zależności zastosujemy testy nieparametryczne (np. U Manna-Whitneya).&quot;</code></pre>
-<p>##Odpowiedź na pytanie badawcze nr 1: Wpływ nadgodzin i środowiska
-#Czy nadgodziny (OverTime) zwiększają rotację?</p>
+</div>
+</div>
+<div id="odpowiedź-na-pytanie-badawcze-nr-1-wpływ-nadgodzin-i-środowiska" class="section level1" number="8">
+<h1><span class="header-section-number">8</span> Odpowiedź na pytanie
+badawcze nr 1: Wpływ nadgodzin i środowiska</h1>
+<div id="czy-nadgodziny-overtime-zwiększają-rotację" class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> Czy nadgodziny
+(OverTime) zwiększają rotację?</h2>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a><span class="fu">library</span>(ggstatsplot)</span>
 <span id="cb42-2"><a href="#cb42-2" tabindex="-1"></a></span>
 <span id="cb42-3"><a href="#cb42-3" tabindex="-1"></a><span class="co"># Test niezależności Chi-kwadrat dla zmiennych kategorycznych</span></span>
@@ -2613,8 +2636,10 @@ Interpretacja: Wykres oraz test statystyczny wskazują na bardzo silną
 zależność. W grupie pracowników mających nadgodziny (Yes), odsetek
 odejść jest trzykrotnie wyższy (~30%) niż w grupie pracującej w normie
 (~10%). Nadgodziny są kluczowym czynnikiem ryzyka.</p>
-<p>#Czy zadowolenie ze środowiska (EnvironmentSatisfaction) ma
-znaczenie?</p>
+</div>
+<div id="czy-zadowolenie-ze-środowiska-environmentsatisfaction-ma-znaczenie" class="section level2" number="8.2">
+<h2><span class="header-section-number">8.2</span> Czy zadowolenie ze
+środowiska (EnvironmentSatisfaction) ma znaczenie?</h2>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a><span class="co"># Przygotowanie danych: zamiana liczb 1-4 na opisowe etykiety</span></span>
 <span id="cb43-2"><a href="#cb43-2" tabindex="-1"></a>dane_temp <span class="ot">&lt;-</span> dane</span>
 <span id="cb43-3"><a href="#cb43-3" tabindex="-1"></a>dane_temp<span class="sc">$</span>EnvSatFactor <span class="ot">&lt;-</span> <span class="fu">factor</span>(dane_temp<span class="sc">$</span>EnvironmentSatisfaction, </span>
@@ -2633,7 +2658,11 @@ Interpretacja: Widoczny jest trend, w którym pracownicy oceniający
 środowisko jako “Niskie” (Low) odchodzą częściej niż ci z oceną “Bardzo
 wysoką” (Very High). Niska satysfakcja z biura/atmosfery sprzyja
 decyzjom o odejściu.</p>
-<p>##Odpowiedź na pytanie badawcze nr 2: Finanse a odejścia</p>
+</div>
+</div>
+<div id="odpowiedź-na-pytanie-badawcze-nr-2-finanse-a-odejścia" class="section level1" number="9">
+<h1><span class="header-section-number">9</span> Odpowiedź na pytanie
+badawcze nr 2: Finanse a odejścia</h1>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" tabindex="-1"></a><span class="co"># Używamy testu nieparametrycznego (type = &quot;nonparametric&quot;) z uwagi na brak rozkładu normalnego</span></span>
 <span id="cb44-2"><a href="#cb44-2" tabindex="-1"></a><span class="fu">ggbetweenstats</span>(</span>
 <span id="cb44-3"><a href="#cb44-3" tabindex="-1"></a>  <span class="at">data =</span> dane,</span>
@@ -2649,7 +2678,10 @@ Interpretacja: Test Manna-Whitneya wykazuje istotną różnicę (p &lt;
 0.001). Mediana zarobków osób odchodzących (ok. 3200) jest znacznie
 niższa od mediany osób pozostających w firmie (ok. 5200). Wynagrodzenie
 jest zatem silnym motywatorem odejść.</p>
-<p>##Odpowiedź na pytanie badawcze nr 3: Profil demograficzny (Wiek)</p>
+</div>
+<div id="odpowiedź-na-pytanie-badawcze-nr-3-profil-demograficzny-wiek" class="section level1" number="10">
+<h1><span class="header-section-number">10</span> Odpowiedź na pytanie
+badawcze nr 3: Profil demograficzny (Wiek)</h1>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a><span class="fu">ggbetweenstats</span>(</span>
 <span id="cb45-2"><a href="#cb45-2" tabindex="-1"></a>  <span class="at">data =</span> dane,</span>
 <span id="cb45-3"><a href="#cb45-3" tabindex="-1"></a>  <span class="at">x =</span> Attrition,</span>
@@ -2663,8 +2695,10 @@ jest zatem silnym motywatorem odejść.</p>
 <p>Interpretacja: Osoby decydujące się na odejście są statystycznie
 młodsze (mediana wieku ~32 lata) niż pracownicy lojalni (mediana ~36
 lat). Firma ma największy problem z utrzymaniem młodych talentów.</p>
-<p>##Odpowiedź na pytanie badawcze nr 4: Analiza Działów
-(Departments)</p>
+</div>
+<div id="odpowiedź-na-pytanie-badawcze-nr-4-analiza-działów-departments" class="section level1" number="11">
+<h1><span class="header-section-number">11</span> Odpowiedź na pytanie
+badawcze nr 4: Analiza Działów (Departments)</h1>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" tabindex="-1"></a><span class="fu">ggbarstats</span>(</span>
 <span id="cb46-2"><a href="#cb46-2" tabindex="-1"></a>  <span class="at">data =</span> dane,</span>
 <span id="cb46-3"><a href="#cb46-3" tabindex="-1"></a>  <span class="at">x =</span> Department,</span>
@@ -2676,7 +2710,6 @@ lat). Firma ma największy problem z utrzymaniem młodych talentów.</p>
 Interpretacja: Dział Sprzedaży (Sales) jest najbardziej narażony na
 rotację – odsetek odejść przekracza tu 20%. Dział Badawczo-Rozwojowy
 (R&amp;D) cechuje się największą stabilnością kadry.</p>
-</div>
 </div>
 
    
