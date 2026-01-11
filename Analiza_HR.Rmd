@@ -69,11 +69,14 @@ Analizowany zbiór danych zawiera informacje dotyczące pracowników firmy.
 procent <- prop_complete_var(dane)*100
 ```
 
-W danych znajduje sie `r procent` 91.43 % kompletnych wartości.
+*W danych znajduje sie `r procent` 91.43 % kompletnych wartości.*
+
+**Kompletność zmiennych:** W tym kroku sprawdziliśmy to, jaka część kolumn w zbiorze jest całkowicie wolna od brakujących informacji. Obliczenia wykazały, że 91.43% zmiennych jest w pełni kompletnych. Oznacza to, że problem braków danych dotyczy jedynie ok. 8.6% kolumn.
 
 ```{r}
 naniar::vis_miss(dane)
 ```
+**Ogólny poziom braków:** Sprawdziliśmy globalny odsetek brakujących komórek w całym arkuszu danych. Powyższa wizualizacja wskazuje na to, że jedynie 0.8% wszystkich wartości to braki (kolor czarny), podczas gdy 99.2% danych jest dostępnych (kolor szary). Warto zwrócić uwagę na to, że braki nie występują losowo w całym zbiorze, lecz koncentrują się w specyficznych kolumnach (widoczne, czarne pasy na wykresie).  Sugeruje nam to, że zaobserwowane braki mają charakter systematyczny dla wybranych cech, a nie są wynikiem przypadkowych błędów zapisu dla całego zbioru.
 
 ## Wizualizacje połączeń w brakach danych
 
