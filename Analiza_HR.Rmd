@@ -23,7 +23,7 @@ library(finalfit)
 library(validate)
 ```
 
-# 1. Wprowadzenie
+# Wprowadzenie
 
 Celem raportu jest analiza firmowych danych HR. [place holder na rozbudowanie na koniec].
 
@@ -31,14 +31,14 @@ Raport składa się z: wprowadzenia, data cleansing oraz data wrangling, wizuali
 
 Zbiór danych zawiera 1470 wierszy oraz 35 kolumn.
 
-## 1.1 Pytania badawcze
+## Pytania badawcze
 
 I -  Czy nadgodziny i niskie zadowolenie ze środowiska zwiększają ryzyko odejścia pracownika?
 II - Czy pracownicy z niższym miesięcznym wynagrodzeniem lub rzadkimi awansami odchodzą częściej?
 III -  Jaka jest charakterystyka (wiek, staż pracy) pracownika, który najczęściej decyduje się na odejście?
 IV -  Które działy oraz stanowiska są najbardziej narażone na odejścia pracowników?
 
-## 1.2 Opis danych
+## Opis danych
 
 Analizowany zbiór danych zawiera informacje dotyczące pracowników firmy.
 
@@ -56,9 +56,9 @@ Satysfakcja i Oceny: EnvironmentSatisfaction: Zadowolenie ze środowiska pracy. 
 
 Historia Zatrudnienia: TotalWorkingYears: Całkowity staż pracy (lata). YearsAtCompany: Liczba lat przepracowanych w obecnej firmie. YearsInCurrentRole: Czas na obecnym stanowisku (lata). YearsSinceLastPromotion: Czas, który upłynął od ostatniego awansu (lata). YearsWithCurrManager: Czas pracy z obecnym menedżerem (lata).
 
-# 2. Porządkowanie i czyszczenie danych
+# Porządkowanie i czyszczenie danych
 
-## 2.1 Braki danych
+## Braki danych
 
 ```{r}
 procent <- prop_complete_var(dane)*100
@@ -70,7 +70,7 @@ W danych znajduje sie `r procent` 91.43 % kompletnych wartości.
 naniar::vis_miss(dane)
 ```
 
-## 2.2 Wizualizacje połączeń w brakach danych
+## Wizualizacje połączeń w brakach danych
 
 ```{r message=FALSE, warning=FALSE}
 naniar::gg_miss_upset(dane)
@@ -92,7 +92,7 @@ wykres<-finalfit::missing_pattern(dane)
 wykres
 ```
 
-## 2.3 Inputacja metodą Hot-Deck
+## Inputacja metodą Hot-Deck
 
 ```{r}
 library(VIM)
@@ -100,7 +100,7 @@ dane <- hotdeck(dane)
 naniar::vis_miss(dane)
 ```
 
-## 2.4 Analiza wartości odstających
+## Analiza wartości odstających
 
 # Sprawdzamy kluczowe zmienne numeryczne pod kątem "outlierów"
 ```{r}
@@ -111,7 +111,7 @@ boxplot(dane$Age, main = "Wiek", col = "salmon")
 par(mfrow=c(1,1)) # Reset ustawień
 ```
 
-# 3. Walidacja danych
+# Walidacja danych
 
 W celu sprawdzenia spójności logicznej danych, zdefiniowane poniżej reguły zostały skonfrontowane z rzeczywistym zbiorem danych za pomocą funkcji confront(). 
 
@@ -146,7 +146,7 @@ barplot(cf)
 
 **Czas od ostatniego awansu** (YearsSinceLastPromotion): Sprawdzono, czy liczba lat, która upłynęła od ostatniego awansu, nie jest większa niż całkowity staż w firmie. Weryfikowano rekordy pod kątem warunku YearsSinceLastPromotion <= YearsAtCompany. Nie znaleziono sprzeczności, co oznacza, że historia awansów jest logicznie spójna z datą rozpoczęcia pracy w firmie.
 
-# 4. Wizualizacja danych
+# Wizualizacja danych
 
 ```{r warning=FALSE}
 library(ggplot2)
@@ -238,7 +238,7 @@ ggplot(data, aes(x = JobSatisfaction, fill = Gender)) +
   )
 ```
 
-# 5. Statystyki Opisowe
+# Statystyki Opisowe
 
 ```{r}
 library(dplyr)
@@ -304,9 +304,9 @@ print(paste("Współczynnik V-Cramera:", round(wynik_cramer, 4)))
 
 ```
 
-# 6. Wnioskowanie Statystyczne
+# Wnioskowanie Statystyczne
 
-## 6.1 Testy normalności rozkładu
+## Testy normalności rozkładu
 ```{r}
 library(nortest)
 
@@ -323,7 +323,7 @@ if(ad_test$p.value < 0.05) {
 }
 ```
 
-## 6.2 Czy nadgodziny zwiększają ryzyko odejścia? (Pytanie badawcze nr 1)
+## Czy nadgodziny zwiększają ryzyko odejścia? (Pytanie badawcze nr 1)
 ```{r}
 library(ggstatsplot)
 
@@ -337,7 +337,7 @@ ggbarstats(
 )
 ```
 
-## 6.3 Czy pracownicy z niższym wynagrodzeniem odchodzą częściej? (Pytanie badawcze nr 2)
+## Czy pracownicy z niższym wynagrodzeniem odchodzą częściej? (Pytanie badawcze nr 2)
 
 ```{r}
 ggbetweenstats(
@@ -351,7 +351,7 @@ ggbetweenstats(
 )
 ```
 
-## 6.4 Analiza odejść w zależności od Działu (Pytanie badawcze nr 4)
+## Analiza odejść w zależności od Działu (Pytanie badawcze nr 4)
 ```{r}
 ggbarstats(
   data = dane,
