@@ -31,32 +31,35 @@ library(validate)
 
 **Struktura raportu:** Raport składa się z: wprowadzenia, data cleansing oraz data wrangling, wizualizacji danych, wnioskowania oraz podsumowania i wniosków końcowych.
 
-**Dane:** Zbiór danych zawiera 1470 wierszy oraz 35 kolumn.
+**Dane**: Zbiór danych zawiera 1470 wierszy oraz 35 kolumn.
 
 ## Pytania badawcze
 
-I -  Czy nadgodziny i niskie zadowolenie ze środowiska zwiększają ryzyko odejścia pracownika?
-II - Czy pracownicy z niższym miesięcznym wynagrodzeniem lub rzadkimi awansami odchodzą częściej?
-III -  Jaka jest charakterystyka (wiek, staż pracy) pracownika, który najczęściej decyduje się na odejście?
-IV -  Które działy oraz stanowiska są najbardziej narażone na odejścia pracowników?
+* Czy nadgodziny i niskie zadowolenie ze środowiska zwiększają ryzyko odejścia pracownika?
+
+* Czy pracownicy z niższym miesięcznym wynagrodzeniem lub rzadkimi awansami odchodzą częściej?
+
+* Jaka jest charakterystyka (wiek, staż pracy) pracownika, który najczęściej decyduje się na odejście?
+
+* Które działy oraz stanowiska są najbardziej narażone na odejścia pracowników?
 
 ## Opis danych
 
 Analizowany zbiór danych zawiera informacje dotyczące pracowników firmy.
 
-Zmienne w zbiorze danych można podzielić na następujące kategorie:
+**Zmienne w zbiorze danych można podzielić na następujące kategorie:**
 
-Zmienna Objaśniana: Attrition: Zmienna kategoryczna wskazująca na to, czy pracownik odszedł z firmy.
+* **Zmienna Objaśniana:** Attrition: Zmienna kategoryczna wskazująca na to, czy pracownik odszedł z firmy.
 
-Zmienne Demograficzne i Osobiste: Age: Wiek pracownika (Lata) Gender: Płeć pracownika. MaritalStatus: Stan cywilny (Single, Married, Divorced). Education: Poziom wykształcenia (1-5). EducationField: Dziedzina wykształcenia (np. Life Sciences, Medical). DistanceFromHome: Odległość od domu.
+* **Zmienne Demograficzne i Osobiste:** Age: Wiek pracownika (Lata) Gender: Płeć pracownika. MaritalStatus: Stan cywilny (Single, Married, Divorced). Education: Poziom wykształcenia (1-5). EducationField: Dziedzina wykształcenia (np. Life Sciences, Medical). DistanceFromHome: Odległość od domu.
 
-Zmienne Związane z Pracą oraz Rolą: Department: Dział, w którym pracuje dana osoba (Sales, R&D, HR). JobRole: Konkretne stanowisko, które zajmuję dana osoba (np. Sales Executive, Laboratory Technician). JobLevel: Poziom stanowiska w strukturze firmy. BusinessTravel: Częstotliwość podróży służbowych (Rarely, Frequently, Non-Travel). OverTime: Czy pracownik pracuje w godzinach ponadwymiarowych (Yes/No).
+* **Zmienne Związane z Pracą oraz Rolą:** Department: Dział, w którym pracuje dana osoba (Sales, R&D, HR). JobRole: Konkretne stanowisko, które zajmuję dana osoba (np. Sales Executive, Laboratory Technician). JobLevel: Poziom stanowiska w strukturze firmy. BusinessTravel: Częstotliwość podróży służbowych (Rarely, Frequently, Non-Travel). OverTime: Czy pracownik pracuje w godzinach ponadwymiarowych (Yes/No).
 
-Wynagrodzenie i Benefity: MonthlyIncome: Miesięczne wynagrodzenie. DailyRate, HourlyRate, MonthlyRate: Stawki płacowe w różnych ujęciach czasowych. PercentSalaryHike: Procentowa podwyżka wynagrodzenia. StockOptionLevel: Poziom opcji na akcje pracownicze.
+* **Wynagrodzenie i Benefity:** MonthlyIncome: Miesięczne wynagrodzenie. DailyRate, HourlyRate, MonthlyRate: Stawki płacowe w różnych ujęciach czasowych. PercentSalaryHike: Procentowa podwyżka wynagrodzenia. StockOptionLevel: Poziom opcji na akcje pracownicze.
 
-Satysfakcja i Oceny: EnvironmentSatisfaction: Zadowolenie ze środowiska pracy. JobSatisfaction: Zadowolenie z wykonywanej pracy. WorkLifeBalance: Ocena równowagi między życiem zawodowym a prywatnym. RelationshipSatisfaction: Satysfakcja z relacji ze współpracownikami. PerformanceRating: Ocena wydajności pracownika.
+* **Satysfakcja i Oceny:** EnvironmentSatisfaction: Zadowolenie ze środowiska pracy. JobSatisfaction: Zadowolenie z wykonywanej pracy. WorkLifeBalance: Ocena równowagi między życiem zawodowym a prywatnym. RelationshipSatisfaction: Satysfakcja z relacji ze współpracownikami. PerformanceRating: Ocena wydajności pracownika.
 
-Historia Zatrudnienia: TotalWorkingYears: Całkowity staż pracy (lata). YearsAtCompany: Liczba lat przepracowanych w obecnej firmie. YearsInCurrentRole: Czas na obecnym stanowisku (lata). YearsSinceLastPromotion: Czas, który upłynął od ostatniego awansu (lata). YearsWithCurrManager: Czas pracy z obecnym menedżerem (lata).
+* **Historia Zatrudnienia:** TotalWorkingYears: Całkowity staż pracy (lata). YearsAtCompany: Liczba lat przepracowanych w obecnej firmie. YearsInCurrentRole: Czas na obecnym stanowisku (lata). YearsSinceLastPromotion: Czas, który upłynął od ostatniego awansu (lata). YearsWithCurrManager: Czas pracy z obecnym menedżerem (lata).
 
 # Porządkowanie i czyszczenie danych
 
@@ -106,7 +109,7 @@ naniar::vis_miss(dane)
 
 ## Analiza wartości odstających
 
-# Sprawdzamy kluczowe zmienne numeryczne pod kątem "outlierów"
+### Sprawdzamy kluczowe zmienne numeryczne pod kątem "outlierów"
 ```{r}
 par(mfrow=c(1,3)) # Ustawienie 3 wykresów w jednym rzędzie
 boxplot(dane$MonthlyIncome, main = "Miesięczne Wynagrodzenie", col = "lightblue")
@@ -131,10 +134,10 @@ YearsAtCompany <= TotalWorkingYears
 
 Reguły walidacji danych:
 
-I - Staż w firmie (YearsAtCompany) musi być mniejszy lub równy całkowitemu stażowi pracy (TotalWorkingYears). 
-II - Czas na obecnym stanowisku (YearsInCurrentRole) musi być mniejszy lub równy stażowi w firmie (YearsAtCompany). 
-III - Czas pracy z obecnym menedżerem (YearsWithCurrManager) musi być mniejszy lub równy stażowi w firmie (YearsAtCompany). 
-IV - Lata od ostatniego awansu (YearsSinceLastPromotion) muszą być mniejsze lub równe stażowi w firmie (YearsAtCompany).
+* Staż w firmie (YearsAtCompany) musi być mniejszy lub równy całkowitemu stażowi pracy (TotalWorkingYears). 
+* Czas na obecnym stanowisku (YearsInCurrentRole) musi być mniejszy lub równy stażowi w firmie (YearsAtCompany). 
+* Czas pracy z obecnym menedżerem (YearsWithCurrManager) musi być mniejszy lub równy stażowi w firmie (YearsAtCompany). 
+* Lata od ostatniego awansu (YearsSinceLastPromotion) muszą być mniejsze lub równe stażowi w firmie (YearsAtCompany).
 
 ```{r}
 cf <- confront(dane, rules, key="EmployeeNumber")
