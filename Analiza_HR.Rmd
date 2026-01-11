@@ -25,7 +25,9 @@ library(validate)
 
 # Wprowadzenie
 
-Celem raportu jest analiza firmowych danych HR. [place holder na rozbudowanie na koniec].
+Celem raportu jest analiza firmowych danych HR. Rotacja pracowników jest jednym z kosztowniejszych problemów dla działów HR. Koszt rekrutacji, wdrożenia i utraconej produktywności może wynosić od 50% do 200% rocznego wynagrodzenia pracownika. 
+
+Celem tego raportu jest zidentyfikowanie kluczowych czynników wpływających na decyzję o odejściu (nadgodziny, wynagrodzenie, wiek, środowisko pracy), aby umożliwić firmie podjęcie działań prewencyjnych i zatrzymanie kluczowych talentów.
 
 Raport składa się z: wprowadzenia, data cleansing oraz data wrangling, wizualizacji danych, wnioskowania (testy statystyczne) oraz podsumowania i wniosków końcowych.
 
