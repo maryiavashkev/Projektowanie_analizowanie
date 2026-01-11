@@ -292,6 +292,62 @@ print(paste("Współczynnik V-Cramera:", round(wynik_cramer, 4)))
 
 ```
 
+# 6. Wnioskowanie Statystyczne
+
+## 6.1 Testy normalności rozkładu
+```{r}
+library(nortest)
+
+# Sprawdzamy czy wynagrodzenie ma rozkład normalny
+ad_test <- ad.test(dane$MonthlyIncome)
+
+print(paste("Wartość p dla testu normalności wynagrodzenia:", ad_test$p.value))
+
+# Interpretacja automatyczna
+if(ad_test$p.value < 0.05) {
+  print("Odrzucamy hipotezę o normalności rozkładu.")
+} else {
+  print("Rozkład jest normalny.")
+}
+```
+
+## 6.2 Czy nadgodziny zwiększają ryzyko odejścia? (Pytanie badawcze nr 1)
+```{r}
+library(ggstatsplot)
+
+# Test Chi-kwadrat z wizualizacją
+ggbarstats(
+  data = dane,
+  x = OverTime,       # Czy są nadgodziny?
+  y = Attrition,      # Czy pracownik odszedł?
+  title = "Zależność między nadgodzinami a odejściem z pracy",
+  label = "both"      # Pokaż liczby i procenty
+)
+```
+
+## 6.3 Czy pracownicy z niższym wynagrodzeniem odchodzą częściej? (Pytanie badawcze nr 2)
+
+```{r}
+ggbetweenstats(
+  data = dane,
+  x = Attrition,          # Grupy: Yes/No
+  y = MonthlyIncome,      # Zmienna numeryczna: Wynagrodzenie
+  type = "nonparametric", # Test nieparametryczny (bo rozkład nie jest normalny)
+  title = "Porównanie zarobków osób, które odeszły i zostały",
+  xlab = "Odejście z firmy (Attrition)",
+  ylab = "Miesięczne wynagrodzenie"
+)
+```
+
+## 6.4 Analiza odejść w zależności od Działu (Pytanie badawcze nr 4)
+```{r}
+ggbarstats(
+  data = dane,
+  x = Department,
+  y = Attrition,
+  title = "Procent odejść w poszczególnych działach"
+)
+```
 
 
 
