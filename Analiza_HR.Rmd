@@ -345,7 +345,9 @@ ggbarstats(
   data = dane,
   x = Department,
   y = Attrition,
-  title = "Procent odejść w poszczególnych działach"
+  title = "Procent odejść w poszczególnych działach",
+
+  palette = "Set2"
 )
 ```
 
