@@ -113,6 +113,8 @@ par(mfrow=c(1,1)) # Reset ustawień
 
 # 3. Walidacja danych
 
+W celu sprawdzenia spójności logicznej danych, zdefiniowane poniżej reguły zostały skonfrontowane z rzeczywistym zbiorem danych za pomocą funkcji confront(). 
+
 ```{r}
 rules <- validator(
 YearsAtCompany <= TotalWorkingYears
@@ -122,9 +124,12 @@ YearsAtCompany <= TotalWorkingYears
 )
 ```
 
-Reguły walidacji danych: 1. Staż w firmie (YearsAtCompany) musi być mniejszy lub równy całkowitemu stażowi pracy (TotalWorkingYears). 2. Czas na obecnym stanowisku (YearsInCurrentRole) musi być mniejszy lub równy stażowi w firmie (YearsAtCompany). 3. Czas pracy z obecnym menedżerem (YearsWithCurrManager) musi być mniejszy lub równy stażowi w firmie (YearsAtCompany). 4. Lata od ostatniego awansu (YearsSinceLastPromotion) muszą być mniejsze lub równe stażowi w firmie (YearsAtCompany).
+Reguły walidacji danych:
 
-Pora zobaczyc czy zbior danych cos tam
+I - Staż w firmie (YearsAtCompany) musi być mniejszy lub równy całkowitemu stażowi pracy (TotalWorkingYears). 
+II - Czas na obecnym stanowisku (YearsInCurrentRole) musi być mniejszy lub równy stażowi w firmie (YearsAtCompany). 
+III - Czas pracy z obecnym menedżerem (YearsWithCurrManager) musi być mniejszy lub równy stażowi w firmie (YearsAtCompany). 
+IV - Lata od ostatniego awansu (YearsSinceLastPromotion) muszą być mniejsze lub równe stażowi w firmie (YearsAtCompany).
 
 ```{r}
 cf <- confront(dane, rules, key="EmployeeNumber")
@@ -132,6 +137,14 @@ cf <- confront(dane, rules, key="EmployeeNumber")
 barplot(cf)
 
 ```
+
+**Całkowity staż pracy** (TotalWorkingYears): Sprawdzono spójność między stażem w obecnej firmie a całkowitym doświadczeniem zawodowym. W tym celu zweryfikowano, czy YearsAtCompany jest mniejsze lub równe TotalWorkingYears. Nie znaleziono żadnych przypadków naruszenia tej reguły, co oznacza, że u każdego pracownika staż w obecnym przedsiębiorstwie mieści się w ramach jego całkowitej kariery.
+
+**Staż na obecnym stanowisku** (YearsInCurrentRole): Sprawdzono, czy czas spędzony na obecnym stanowisku nie przekracza całkowitego czasu zatrudnienia w firmie. Przetestowano warunek, w którym YearsInCurrentRole powinno być mniejsze lub równe YearsAtCompany. Wszystkie obserwacje spełniają to kryterium, co potwierdza logiczną poprawność danych dotyczących ścieżki kariery wewnątrz organizacji.
+
+**Czas pracy z obecnym menedżerem** (YearsWithCurrManager): Sprawdzono, czy okres współpracy z obecnym przełożonym jest możliwy w świetle stażu pracownika w firmie. Zbadano zgodność z regułą YearsWithCurrManager <= YearsAtCompany. Nie odnotowano żadnych błędów, co wskazuje, że relacje podległości są poprawnie osadzone w czasie trwania zatrudnienia.
+
+**Czas od ostatniego awansu** (YearsSinceLastPromotion): Sprawdzono, czy liczba lat, która upłynęła od ostatniego awansu, nie jest większa niż całkowity staż w firmie. Weryfikowano rekordy pod kątem warunku YearsSinceLastPromotion <= YearsAtCompany. Nie znaleziono sprzeczności, co oznacza, że historia awansów jest logicznie spójna z datą rozpoczęcia pracy w firmie.
 
 # 4. Wizualizacja danych
 
