@@ -25,13 +25,13 @@ library(validate)
 
 # Wprowadzenie
 
-Celem raportu jest analiza firmowych danych HR. Rotacja pracowników jest jednym z kosztowniejszych problemów dla działów HR. Koszt rekrutacji, wdrożenia i utraconej produktywności może wynosić od 50% do 200% rocznego wynagrodzenia pracownika.
+**Cel projektu:** Celem niniejszego projektu jest analiza zbioru danych HR pod kątem identyfikacji przyczyn rotacji pracowników. Jest to kluczowe zagadnienie biznesowe -  koszty związane z rekrutacją i onboardingiem (wraz z utraconą produktywnością) szacuje się na 50–200% rocznego wynagrodzenia.
 
-Celem tego raportu jest zidentyfikowanie kluczowych czynników wpływających na decyzję o odejściu (nadgodziny, wynagrodzenie, wiek, środowisko pracy), aby umożliwić firmie podjęcie działań prewencyjnych i zatrzymanie kluczowych talentów.
+**Zakres analizy:** W projekcie zwrócona została szczególna uwaga na znalezienie zależności między odejściem pracownika a zmiennymi takimi jak: nadgodziny, wynagrodzenie, wiek czy środowisko pracy. Analiza ma na celu wskazanie obszarów, które wymagają działań prewencyjnych.
 
-Raport składa się z: wprowadzenia, data cleansing oraz data wrangling, wizualizacji danych, wnioskowania (testy statystyczne) oraz podsumowania i wniosków końcowych.
+**Struktura raportu:** Raport składa się z: wprowadzenia, data cleansing oraz data wrangling, wizualizacji danych, wnioskowania oraz podsumowania i wniosków końcowych.
 
-Zbiór danych zawiera 1470 wierszy oraz 35 kolumn.
+**Dane:** Zbiór danych zawiera 1470 wierszy oraz 35 kolumn.
 
 ## Pytania badawcze
 
@@ -333,8 +333,8 @@ if(ad_test$p.value < 0.05) {
 }
 ```
 
-##Odpowiedź na pytanie badawcze nr 1: Wpływ nadgodzin i środowiska
-#Czy nadgodziny (OverTime) zwiększają rotację?
+# Odpowiedź na pytanie badawcze nr 1: Wpływ nadgodzin i środowiska
+## Czy nadgodziny (OverTime) zwiększają rotację?
 ```{r}
 library(ggstatsplot)
 
@@ -349,7 +349,7 @@ ggbarstats(
 ```
 Interpretacja: Wykres oraz test statystyczny wskazują na bardzo silną zależność. W grupie pracowników mających nadgodziny (Yes), odsetek odejść jest trzykrotnie wyższy (~30%) niż w grupie pracującej w normie (~10%). Nadgodziny są kluczowym czynnikiem ryzyka.
 
-#Czy zadowolenie ze środowiska (EnvironmentSatisfaction) ma znaczenie?
+## Czy zadowolenie ze środowiska (EnvironmentSatisfaction) ma znaczenie?
 ```{r}
 # Przygotowanie danych: zamiana liczb 1-4 na opisowe etykiety
 dane_temp <- dane
@@ -367,7 +367,7 @@ ggbarstats(
 ```
 Interpretacja: Widoczny jest trend, w którym pracownicy oceniający środowisko jako "Niskie" (Low) odchodzą częściej niż ci z oceną "Bardzo wysoką" (Very High). Niska satysfakcja z biura/atmosfery sprzyja decyzjom o odejściu.
 
-##Odpowiedź na pytanie badawcze nr 2: Finanse a odejścia
+# Odpowiedź na pytanie badawcze nr 2: Finanse a odejścia
 ```{r}
 # Używamy testu nieparametrycznego (type = "nonparametric") z uwagi na brak rozkładu normalnego
 ggbetweenstats(
@@ -382,7 +382,7 @@ ggbetweenstats(
 ```
 Interpretacja: Test Manna-Whitneya wykazuje istotną różnicę (p < 0.001). Mediana zarobków osób odchodzących (ok. 3200) jest znacznie niższa od mediany osób pozostających w firmie (ok. 5200). Wynagrodzenie jest zatem silnym motywatorem odejść.
 
-##Odpowiedź na pytanie badawcze nr 3: Profil demograficzny (Wiek)
+# Odpowiedź na pytanie badawcze nr 3: Profil demograficzny (Wiek)
 ```{r}
 ggbetweenstats(
   data = dane,
@@ -397,7 +397,7 @@ ggbetweenstats(
 
 Interpretacja: Osoby decydujące się na odejście są statystycznie młodsze (mediana wieku ~32 lata) niż pracownicy lojalni (mediana ~36 lat). Firma ma największy problem z utrzymaniem młodych talentów.
 
-##Odpowiedź na pytanie badawcze nr 4: Analiza Działów (Departments)
+# Odpowiedź na pytanie badawcze nr 4: Analiza Działów (Departments)
 ```{r}
 ggbarstats(
   data = dane,
