@@ -138,7 +138,7 @@ barplot(cf)
 
 ```
 
-**Całkowity staż pracy** (TotalWorkingYears): Sprawdzono spójność między stażem w obecnej firmie a całkowitym doświadczeniem zawodowym. W tym celu zweryfikowano, czy YearsAtCompany jest mniejsze lub równe TotalWorkingYears. Nie znaleziono żadnych przypadków naruszenia tej reguły, co oznacza, że u każdego pracownika staż w obecnym przedsiębiorstwie mieści się w ramach jego całkowitej kariery.
+**Całkowity staż pracy** (TotalWorkingYears): Sprawdzona została spójność między stażem w obecnej firmie a całkowitym doświadczeniem zawodowym. W tym celu zweryfikowano, czy YearsAtCompany jest mniejsze lub równe TotalWorkingYears. Nie znaleziono żadnych przypadków naruszenia tej reguły, co oznacza, że u każdego pracownika staż w obecnym przedsiębiorstwie mieści się w ramach jego całkowitej kariery.
 
 **Staż na obecnym stanowisku** (YearsInCurrentRole): Sprawdzono, czy czas spędzony na obecnym stanowisku nie przekracza całkowitego czasu zatrudnienia w firmie. Przetestowano warunek, w którym YearsInCurrentRole powinno być mniejsze lub równe YearsAtCompany. Wszystkie obserwacje spełniają to kryterium, co potwierdza logiczną poprawność danych dotyczących ścieżki kariery wewnątrz organizacji.
 
