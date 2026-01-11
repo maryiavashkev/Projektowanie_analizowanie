@@ -274,7 +274,6 @@ tabela_wynikowa
 ```
 
 ```{r}
-install.packages("DescTools")
 
 library(dplyr)
 library(corrplot)

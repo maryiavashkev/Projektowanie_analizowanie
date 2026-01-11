@@ -16,3 +16,7 @@ validate
 scales
 psych
 kableExtra
+corrplot
+DescTools
+nortest
+ggstatsplot
