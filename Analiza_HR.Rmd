@@ -33,10 +33,10 @@ Zbiór danych zawiera 1470 wierszy oraz 35 kolumn.
 
 ## 1.1 Pytania badawcze
 
-1.  Czy nadgodziny i niskie zadowolenie ze środowiska zwiększają ryzyko odejścia pracownika?
-2.  Czy pracownicy z niższym miesięcznym wynagrodzeniem lub rzadkimi awansami odchodzą częściej?
-3.  Jaka jest charakterystyka (wiek, staż pracy) pracownika, który najczęściej decyduje się na odejście?
-4.  Które działy oraz stanowiska są najbardziej narażone na odejścia pracowników?
+I -  Czy nadgodziny i niskie zadowolenie ze środowiska zwiększają ryzyko odejścia pracownika?
+II - Czy pracownicy z niższym miesięcznym wynagrodzeniem lub rzadkimi awansami odchodzą częściej?
+III -  Jaka jest charakterystyka (wiek, staż pracy) pracownika, który najczęściej decyduje się na odejście?
+IV -  Które działy oraz stanowiska są najbardziej narażone na odejścia pracowników?
 
 ## 1.2 Opis danych
 
