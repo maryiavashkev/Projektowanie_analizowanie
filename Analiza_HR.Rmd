@@ -69,7 +69,7 @@ Analizowany zbiór danych zawiera informacje dotyczące pracowników firmy.
 procent <- prop_complete_var(dane)*100
 ```
 
-*W danych znajduje sie `r procent` (91.43 %) kompletnych wartości.*
+*W danych znajduje sie (91.43 %) kompletnych wartości.*
 
 **Kompletność zmiennych:** W tym kroku sprawdziliśmy to, jaka część kolumn w zbiorze jest całkowicie wolna od brakujących informacji. Obliczenia wykazały, że 91.43% zmiennych jest w pełni kompletnych. Oznacza to, że problem braków danych dotyczy jedynie ok. 8.6% kolumn.
 
