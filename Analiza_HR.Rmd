@@ -96,6 +96,8 @@ wykres
 
 ## Inputacja metodą Hot-Deck
 
+Zastosowano metodę imputacji Hot-Deck. Jest to technika, w której brakujące wartości są uzupełniane danymi od losowo wybranego "podobnego" rekordu (sąsiada) w zbiorze danych. Metoda ta jest lepsza od uzupełniania średnią, ponieważ pozwala zachować naturalny rozkład zmiennych i ich wariancję.
+
 ```{r}
 library(VIM)
 dane <- hotdeck(dane)
@@ -112,6 +114,7 @@ boxplot(dane$TotalWorkingYears, main = "Staż Pracy", col = "lightgreen")
 boxplot(dane$Age, main = "Wiek", col = "salmon")
 par(mfrow=c(1,1)) # Reset ustawień
 ```
+Wykresy pudełkowe wskazują na obecność wartości odstających (kropek) w zmiennych `MonthlyIncome` oraz `TotalWorkingYears`.  Jest to zjawisko naturalne w strukturze korporacyjnej – wartości te reprezentują kadrę zarządzającą (Managerów i Dyrektorów) z wieloletnim stażem i wyższymi zarobkami. Nie są to błędy danych, dlatego nie zostaną usunięte z dalszej analizy.
 
 # Walidacja danych
 
@@ -308,7 +311,12 @@ print(paste("Współczynnik V-Cramera:", round(wynik_cramer, 4)))
 
 # Wnioskowanie Statystyczne
 
+W tej sekcji zweryfikujemy hipotezy badawcze postawione we wstępie, wykorzystując testy statystyczne.
+
 ## Testy normalności rozkładu
+
+Przed wyborem odpowiednich testów (parametryczne vs nieparametryczne) sprawdzamy rozkład zmiennej `MonthlyIncome`.
+
 ```{r}
 library(nortest)
 
@@ -319,50 +327,84 @@ print(paste("Wartość p dla testu normalności wynagrodzenia:", ad_test$p.value
 
 # Interpretacja automatyczna
 if(ad_test$p.value < 0.05) {
-  print("Odrzucamy hipotezę o normalności rozkładu.")
+  print("Odrzucamy hipotezę o normalności rozkładu. Do analizy zależności zastosujemy testy nieparametryczne (np. U Manna-Whitneya).")
 } else {
   print("Rozkład jest normalny.")
 }
 ```
 
-## Czy nadgodziny zwiększają ryzyko odejścia? (Pytanie badawcze nr 1)
+##Odpowiedź na pytanie badawcze nr 1: Wpływ nadgodzin i środowiska
+#Czy nadgodziny (OverTime) zwiększają rotację?
 ```{r}
 library(ggstatsplot)
 
-# Test Chi-kwadrat z wizualizacją
+# Test niezależności Chi-kwadrat dla zmiennych kategorycznych
 ggbarstats(
   data = dane,
-  x = OverTime,       # Czy są nadgodziny?
-  y = Attrition,      # Czy pracownik odszedł?
+  x = OverTime,       
+  y = Attrition,      
   title = "Zależność między nadgodzinami a odejściem z pracy",
-  label = "both"      # Pokaż liczby i procenty
+  label = "both"      
 )
 ```
+Interpretacja: Wykres oraz test statystyczny wskazują na bardzo silną zależność. W grupie pracowników mających nadgodziny (Yes), odsetek odejść jest trzykrotnie wyższy (~30%) niż w grupie pracującej w normie (~10%). Nadgodziny są kluczowym czynnikiem ryzyka.
 
-## Czy pracownicy z niższym wynagrodzeniem odchodzą częściej? (Pytanie badawcze nr 2)
-
+#Czy zadowolenie ze środowiska (EnvironmentSatisfaction) ma znaczenie?
 ```{r}
+# Przygotowanie danych: zamiana liczb 1-4 na opisowe etykiety
+dane_temp <- dane
+dane_temp$EnvSatFactor <- factor(dane_temp$EnvironmentSatisfaction, 
+                            levels = c(1, 2, 3, 4), 
+                            labels = c("Low", "Med", "High", "Very High"))
+
+ggbarstats(
+  data = dane_temp,
+  x = EnvSatFactor,
+  y = Attrition,
+  title = "Poziom zadowolenia ze środowiska a rotacja",
+  xlab = "Ocena satysfakcji ze środowiska"
+)
+```
+Interpretacja: Widoczny jest trend, w którym pracownicy oceniający środowisko jako "Niskie" (Low) odchodzą częściej niż ci z oceną "Bardzo wysoką" (Very High). Niska satysfakcja z biura/atmosfery sprzyja decyzjom o odejściu.
+
+##Odpowiedź na pytanie badawcze nr 2: Finanse a odejścia
+```{r}
+# Używamy testu nieparametrycznego (type = "nonparametric") z uwagi na brak rozkładu normalnego
 ggbetweenstats(
   data = dane,
-  x = Attrition,          # Grupy: Yes/No
-  y = MonthlyIncome,      # Zmienna numeryczna: Wynagrodzenie
-  type = "nonparametric", # Test nieparametryczny (bo rozkład nie jest normalny)
+  x = Attrition,          
+  y = MonthlyIncome,      
+  type = "nonparametric", 
   title = "Porównanie zarobków osób, które odeszły i zostały",
-  xlab = "Odejście z firmy (Attrition)",
+  xlab = "Status pracownika (Attrition)",
   ylab = "Miesięczne wynagrodzenie"
 )
 ```
+Interpretacja: Test Manna-Whitneya wykazuje istotną różnicę (p < 0.001). Mediana zarobków osób odchodzących (ok. 3200) jest znacznie niższa od mediany osób pozostających w firmie (ok. 5200). Wynagrodzenie jest zatem silnym motywatorem odejść.
 
-## Analiza odejść w zależności od Działu (Pytanie badawcze nr 4)
+##Odpowiedź na pytanie badawcze nr 3: Profil demograficzny (Wiek)
+```{r}
+ggbetweenstats(
+  data = dane,
+  x = Attrition,
+  y = Age,
+  type = "nonparametric",
+  title = "Wiek pracowników a decyzja o odejściu",
+  xlab = "Status pracownika (Attrition)",
+  ylab = "Wiek (Lata)"
+)
+```
+
+Interpretacja: Osoby decydujące się na odejście są statystycznie młodsze (mediana wieku ~32 lata) niż pracownicy lojalni (mediana ~36 lat). Firma ma największy problem z utrzymaniem młodych talentów.
+
+##Odpowiedź na pytanie badawcze nr 4: Analiza Działów (Departments)
 ```{r}
 ggbarstats(
   data = dane,
   x = Department,
   y = Attrition,
   title = "Procent odejść w poszczególnych działach",
-
   palette = "Set2"
 )
 ```
-
-
+Interpretacja: Dział Sprzedaży (Sales) jest najbardziej narażony na rotację – odsetek odejść przekracza tu 20%. Dział Badawczo-Rozwojowy (R&D) cechuje się największą stabilnością kadry.
