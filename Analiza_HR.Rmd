@@ -343,6 +343,7 @@ print(paste("Współczynnik V-Cramera:", round(wynik_cramer, 4)))
 
 ```
 W celu zidentyfikowania powiązań w zbiorze danych, przeprowadziliśmy powyżej analizę korelacji liniowej (Pearsona), rangowej (Kendalla) oraz asocjacji zmiennych jakościowych (V-Cramera).
+
 Kluczowymi wnioskami wynikającymi z naszej analizy jest m.in. zidentyfikowanie umiarkowanej, dodatnią korelację pomiędzy dochodem a całkowitym stażem pracy, co jest silniejszym związkiem niż w przypadku wieku pracownika. Warto również zwrócić uwagę na fakt, iż maksymalne wartości współczynników nie przekraczają progu silnej korelacji.
 
 # Wnioskowanie Statystyczne
@@ -368,6 +369,7 @@ if(ad_test$p.value < 0.05) {
   print("Rozkład jest normalny.")
 }
 ```
+Uzyskana przez nas wartość p-value nakazuje odrzucenie hipotezy zerowej o normalności rozkładu. Ze względu na niespełnienie założenia parametrycznego, do dalszej analizy różnic w grupach zastosujemy  testy nieparametryczne.
 
 # Odpowiedź na pytanie badawcze nr 1: Wpływ nadgodzin i środowiska
 ## Czy nadgodziny (OverTime) zwiększają rotację?
