@@ -447,4 +447,14 @@ ggbarstats(
 ```
 Interpretacja: Dział Sprzedaży (Sales) jest najbardziej narażony na rotację – odsetek odejść przekracza tu 20%. Dział Badawczo-Rozwojowy (R&D) cechuje się największą stabilnością kadry.
 
+# Wnioski końcowe
 
+Celem niniejszej pracy było zidentyfikowanie kluczowych czynników finansowych oraz organizacyjnych wpływających na rotację pracowników – cel ten udało się osiągnąć. Przeprowadzona analiza statystyczna pozwoliła wyodrębnić główne determinanty odejść, którymi okazały się: poziom wynagrodzenia, obciążenie nadgodzinami oraz wiek pracownika.
+
+## Kluczowe wyniki
+
+**Czynnik finansowy:** Istnieje drastyczna dysproporcja w zarobkach. Mediana wynagrodzenia osób odchodzących jest aż o 40% niższa niż osób lojalnych. Jest to kluczowy czynnik determinujący decyzję o zmianie pracy.
+
+**Wypalenie zawodowe:** Nadgodziny są krytycznym obciążeniem – ich występowanie trzykrotnie zwiększa ryzyko odejścia.
+
+**Profil ryzyka:** Najczęściej odchodzą pracownicy młodzi  oraz zatrudnieni w Dziale Sprzedaży.

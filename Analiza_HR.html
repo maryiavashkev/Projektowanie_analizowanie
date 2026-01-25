@@ -2571,6 +2571,8 @@ Kurtoza
 </tr>
 </tbody>
 </table>
+<p>Tabela powyżej przedstawia zestawienie kluczowych statystyk opisowych
+dla zmiennych numerycznych.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
 <span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a><span class="fu">library</span>(DescTools)</span>
@@ -2598,6 +2600,14 @@ Kurtoza
 <span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a>wynik_cramer <span class="ot">&lt;-</span> <span class="fu">CramerV</span>(tab)</span>
 <span id="cb19-6"><a href="#cb19-6" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Współczynnik V-Cramera:&quot;</span>, <span class="fu">round</span>(wynik_cramer, <span class="dv">4</span>)))</span></code></pre></div>
 <pre><code>## [1] &quot;Współczynnik V-Cramera: 0.9394&quot;</code></pre>
+<p>W celu zidentyfikowania powiązań w zbiorze danych, przeprowadziliśmy
+powyżej analizę korelacji liniowej (Pearsona), rangowej (Kendalla) oraz
+asocjacji zmiennych jakościowych (V-Cramera).</p>
+<p>Kluczowymi wnioskami wynikającymi z naszej analizy jest m.in.
+zidentyfikowanie umiarkowanej, dodatnią korelację pomiędzy dochodem a
+całkowitym stażem pracy, co jest silniejszym związkiem niż w przypadku
+wieku pracownika. Warto również zwrócić uwagę na fakt, iż maksymalne
+wartości współczynników nie przekraczają progu silnej korelacji.</p>
 </div>
 <div id="wnioskowanie-statystyczne" class="section level1" number="6">
 <h1><span class="header-section-number">6</span> Wnioskowanie
@@ -2623,6 +2633,10 @@ sprawdzamy rozkład zmiennej <code>MonthlyIncome</code>.</p>
 <span id="cb23-5"><a href="#cb23-5" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Rozkład jest normalny.&quot;</span>)</span>
 <span id="cb23-6"><a href="#cb23-6" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;Odrzucamy hipotezę o normalności rozkładu. Do analizy zależności zastosujemy testy nieparametryczne (np. U Manna-Whitneya).&quot;</code></pre>
+<p>Uzyskana przez nas wartość p-value nakazuje odrzucenie hipotezy
+zerowej o normalności rozkładu. Ze względu na niespełnienie założenia
+parametrycznego, do dalszej analizy różnic w grupach zastosujemy testy
+nieparametryczne.</p>
 </div>
 </div>
 <div id="odpowiedź-na-pytanie-badawcze-nr-1-wpływ-nadgodzin-i-środowiska" class="section level1" number="7">
