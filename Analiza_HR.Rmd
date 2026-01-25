@@ -88,25 +88,22 @@ naniar::gg_miss_upset(dane)
 
 Analiza powyższego wykresu wskazuje na to, iż braki w kolumnach Age, Attrition i MonthlyIncome współwystępują w mniej niż 3% przypadków. Oznacza to brak ukrytych zależności między nimi i sugeruje ich losowy charakter.
 
+Uzupełniając naszą analizę, wygenerowaliśmy wykres macierzowy, którego celem jest zweryfikowanie, czy braki danych grupują się w specyficznych obszarach zbioru czy są równomiernie rozproszone. Pozwoli nam to wykluczyć błędy techniczne powstałe na etapie wprowadzania danych.
+
 ```{r message=FALSE, warning=FALSE}
 library(finalfit)
 finalfit::missing_pattern(dane)
 ```
+Wykres ukazuje równomierne rozproszenie brakujących wartości w kolumnach Age, Attrition i MonthlyIncome. Brak widocznych, zwartych bloków czy klastrów pustych danych ostatecznie potwierdza, że mamy do czynienia z losowymi brakami, a nie systemowym błędem.
 
-Uzupełniając naszą analizę, wygenerowaliśmy wykres macierzowy, którego celem jest zweryfikowanie, czy braki danych grupują się w specyficznych obszarach zbioru czy są równomiernie rozproszone. Pozwoli nam to wykluczyć błędy techniczne powstałe na etapie wprowadzania danych.
+Aby zweryfikować nasze wnioski z poprzednich wykresów, stworzyliśmy heatmap korelacji braków. Sprawdza ona, czy istnienie braku w jednej zmiennej zwiększa statystyczne prawdopodobieństwo wystąpienia braku w innej.
 
 ```{r message=FALSE, warning=FALSE}
 library(ggplot2)
 ggplot(dane,aes(x=Age, y=MonthlyIncome)) + geom_miss_point() + 
   labs(tittle="Wzorce braków danych w HR", x="Age" , y="MonthlyIncome ()")
 ```
-
-Wykres ukazuje równomierne rozproszenie brakujących wartości w kolumnach Age, Attrition i MonthlyIncome. Brak widocznych, zwartych bloków czy klastrów pustych danych ostatecznie potwierdza, że mamy do czynienia z losowymi brakami, a nie systemowym błędem.
-
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-wykres<-finalfit::missing_pattern(dane)
-wykres
-```
+Współczynniki korelacji między brakami są bliskie zeru. Oznacza to brak istotnych statystycznie powiązań. Potwierdza to ostatecznie, że mechanizm powstawania braków jest losowy i nie wymaga stosowania zaawansowanych modeli do ich modelowania.
 
 ## Inputacja metodą Hot-Deck
 
