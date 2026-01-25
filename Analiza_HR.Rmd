@@ -15,7 +15,7 @@ output:
 
 ```{r setup, include=FALSE}
 ## Global options
-knitr::opts_chunk$set(cache = TRUE)
+knitr::opts_chunk$set(cache = TRUE, echo = FALSE)
 dane <- read.csv("HR.csv")
 library(tidyverse)
 library(naniar)
@@ -147,7 +147,7 @@ Reguły walidacji danych:
 * Czas pracy z obecnym menedżerem (YearsWithCurrManager) musi być mniejszy lub równy stażowi w firmie (YearsAtCompany). 
 * Lata od ostatniego awansu (YearsSinceLastPromotion) muszą być mniejsze lub równe stażowi w firmie (YearsAtCompany).
 
-```{r}
+```{r warning=FALSE}
 cf <- confront(dane, rules, key="EmployeeNumber")
 
 barplot(cf)
@@ -334,13 +334,6 @@ korelacje_kendall <- cor(dane_numeryczne, method = "kendall", use = "complete.ob
 # Wykres
 corrplot(korelacje_kendall, method = "number", type = "upper", diag = FALSE)
 
-# Korelacja jakościowa (V-Cramera)
-tab <- table(dane$Department, dane$JobRole)
-
-# Obliczenie współczynnika
-wynik_cramer <- CramerV(tab)
-print(paste("Współczynnik V-Cramera:", round(wynik_cramer, 4)))
-
 ```
 W celu zidentyfikowania powiązań w zbiorze danych, przeprowadziliśmy powyżej analizę korelacji liniowej (Pearsona), rangowej (Kendalla) oraz asocjacji zmiennych jakościowych (V-Cramera).
 
@@ -367,6 +360,10 @@ if(ad_test$p.value < 0.05) {
   print("Odrzucamy hipotezę o normalności rozkładu. Do analizy zależności zastosujemy testy nieparametryczne (np. U Manna-Whitneya).")
 } else {
   print("Rozkład jest normalny.")
+  
+qqnorm(dane$MonthlyIncome, main = 'Wykres Q-Q dla "MonthlyIncome"')
+qqline(dane$MonthlyIncome, col = "red")
+
 }
 ```
 Uzyskana przez nas wartość p-value nakazuje odrzucenie hipotezy zerowej o normalności rozkładu. Ze względu na niespełnienie założenia parametrycznego, do dalszej analizy różnic w grupach zastosujemy  testy nieparametryczne.
