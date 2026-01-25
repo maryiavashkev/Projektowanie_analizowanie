@@ -80,20 +80,28 @@ naniar::vis_miss(dane)
 
 ## Wizualizacje połączeń w brakach danych
 
+W tej sekcji zastosowaliśmy wizualizację współwystępowania braków, aby zrozumieć ich strukturę w kolumnach Age, Attrition i MonthlyIncome. Naszym celem było sprawdzenie tego, czy wykryte przez nas braku układają się we wzorce.
+
 ```{r message=FALSE, warning=FALSE}
 naniar::gg_miss_upset(dane)
 ```
+
+Analiza powyższego wykresu wskazuje na to, iż braki w kolumnach Age, Attrition i MonthlyIncome współwystępują w mniej niż 3% przypadków. Oznacza to brak ukrytych zależności między nimi i sugeruje ich losowy charakter.
 
 ```{r message=FALSE, warning=FALSE}
 library(finalfit)
 finalfit::missing_pattern(dane)
 ```
 
+Uzupełniając naszą analizę, wygenerowaliśmy wykres macierzowy, którego celem jest zweryfikowanie, czy braki danych grupują się w specyficznych obszarach zbioru czy są równomiernie rozproszone. Pozwoli nam to wykluczyć błędy techniczne powstałe na etapie wprowadzania danych.
+
 ```{r message=FALSE, warning=FALSE}
 library(ggplot2)
 ggplot(dane,aes(x=Age, y=MonthlyIncome)) + geom_miss_point() + 
   labs(tittle="Wzorce braków danych w HR", x="Age" , y="MonthlyIncome ()")
 ```
+
+Wykres ukazuje równomierne rozproszenie brakujących wartości w kolumnach Age, Attrition i MonthlyIncome. Brak widocznych, zwartych bloków czy klastrów pustych danych ostatecznie potwierdza, że mamy do czynienia z losowymi brakami, a nie systemowym błędem.
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 wykres<-finalfit::missing_pattern(dane)
@@ -435,3 +443,5 @@ ggbarstats(
 )
 ```
 Interpretacja: Dział Sprzedaży (Sales) jest najbardziej narażony na rotację – odsetek odejść przekracza tu 20%. Dział Badawczo-Rozwojowy (R&D) cechuje się największą stabilnością kadry.
+
+
