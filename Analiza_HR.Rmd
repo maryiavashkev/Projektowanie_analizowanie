@@ -291,9 +291,9 @@ tabela_wynikowa <- dane %>%
   summarize(
     Min = min(MonthlyIncome, na.rm = TRUE),
     Max = max(MonthlyIncome, na.rm = TRUE),
-    średnia = mean(MonthlyIncome, na.rm = TRUE),
-    odchylenie = sd(MonthlyIncome, na.rm = TRUE),
-    mediana = median(MonthlyIncome, na.rm = TRUE),
+    Średnia = mean(MonthlyIncome, na.rm = TRUE),
+    Odchylenie = sd(MonthlyIncome, na.rm = TRUE),
+    Mediana = median(MonthlyIncome, na.rm = TRUE),
     Q1 = quantile(MonthlyIncome, 0.25, na.rm = TRUE),
     Q3 = quantile(MonthlyIncome, 0.75, na.rm = TRUE),
     Skośność = skew(MonthlyIncome, na.rm = TRUE),
@@ -303,14 +303,22 @@ tabela_wynikowa <- dane %>%
   kbl(digits = 2) %>% 
   kable_paper("striped", full_width = F) %>%
   column_spec(1:2, bold = T) %>%
-  row_spec(c(1, 3, 5), bold = T, color = "white", background = "blue")
+  row_spec(c(1, 3, 5), bold = T, color = "white", background = "mediumblue")
 
 
 tabela_wynikowa
 
 ```
 
-Tabela powyżej przedstawia zestawienie kluczowych statystyk opisowych dla zmiennych numerycznych.
+Tabela powyżej przedstawia zestawienie kluczowych statystyk opisowych dla zmiennej MonthlyIncome w podziale na JobLevel.
+
+Najistotniejsze wnioski:
+
+* **Progresja wynagrodzeń:** Obserwujemy wyraźny, wzrost przeciętnych zarobków wraz z poziomem stanowiska (od ok. 2 796 do 19 192). Najbardziej dynamiczny skok płacowy (niemal dwukrotny) występuje przy awansie z poziomu 1 na 2.
+
+* **Min, max oraz kwartyle:** Analiza kwartyli (Q1, Q3) wskazuje na wyraźne rozdzielenie przedziałów płacowych pomiędzy poziomami. Uwagę zwraca poziom 5, gdzie mimo najwyższych wartości (Min: 18 041, Max: 19 973), rozstęp jest najwęższy w zestawieniu. Może to wskazywać na sztywne widełki oraz małą elastyczności płac na najwyższym szczeblu.
+
+* **Skośność:** Wraz z awansem następuje inwersja asymetrii - na poziomach niższych (1-3) skośność jest dodatnia - dominują zarobki bliższe minimum, z kolei na wyższych poziomach (4-5) staje się ujemna, oznacza to, że masa rozkładu przesuwa się w stronę wartości maksymalnych).
 
 ```{r}
 
@@ -335,9 +343,9 @@ korelacje_kendall <- cor(dane_numeryczne, method = "kendall", use = "complete.ob
 corrplot(korelacje_kendall, method = "number", type = "upper", diag = FALSE)
 
 ```
-W celu zidentyfikowania powiązań w zbiorze danych, przeprowadziliśmy powyżej analizę korelacji liniowej (Pearsona), rangowej (Kendalla) oraz asocjacji zmiennych jakościowych (V-Cramera).
+W celu zidentyfikowania powiązań w zbiorze danych, przeprowadziliśmy powyżej analizę korelacji liniowej (Pearsona) oraz rangowej (Kendalla).
 
-Kluczowymi wnioskami wynikającymi z naszej analizy jest m.in. zidentyfikowanie umiarkowanej, dodatnią korelację pomiędzy dochodem a całkowitym stażem pracy, co jest silniejszym związkiem niż w przypadku wieku pracownika. Warto również zwrócić uwagę na fakt, iż maksymalne wartości współczynników nie przekraczają progu silnej korelacji.
+Kluczowymi wnioskami wynikającymi z naszej analizy jest m.in. zidentyfikowanie umiarkowanej, dodatniej korelacji pomiędzy dochodem a całkowitym stażem pracy, co jest silniejszym związkiem niż w przypadku wieku pracownika. Warto również zwrócić uwagę na fakt, iż maksymalne wartości współczynników nie przekraczają progu silnej korelacji.
 
 # Wnioskowanie Statystyczne
 
@@ -366,7 +374,7 @@ qqline(dane$MonthlyIncome, col = "red")
 
 }
 ```
-Uzyskana przez nas wartość p-value nakazuje odrzucenie hipotezy zerowej o normalności rozkładu. Ze względu na niespełnienie założenia parametrycznego, do dalszej analizy różnic w grupach zastosujemy  testy nieparametryczne.
+Uzyskana przez nas wartość p-value nakazuje odrzucenie hipotezy zerowej o normalności rozkładu. Ze względu na niespełnienie założenia parametrycznego, do dalszej analizy zmiennej "MonthlyIncome" zastosujemy  testy nieparametryczne.
 
 # Odpowiedź na pytanie badawcze nr 1: Wpływ nadgodzin i środowiska
 ## Czy nadgodziny (OverTime) zwiększają rotację?
