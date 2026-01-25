@@ -310,6 +310,8 @@ tabela_wynikowa
 
 ```
 
+Tabela powyżej przedstawia zestawienie kluczowych statystyk opisowych dla zmiennych numerycznych.
+
 ```{r}
 
 library(dplyr)
@@ -340,6 +342,8 @@ wynik_cramer <- CramerV(tab)
 print(paste("Współczynnik V-Cramera:", round(wynik_cramer, 4)))
 
 ```
+W celu zidentyfikowania powiązań w zbiorze danych, przeprowadziliśmy powyżej analizę korelacji liniowej (Pearsona), rangowej (Kendalla) oraz asocjacji zmiennych jakościowych (V-Cramera).
+Kluczowymi wnioskami wynikającymi z naszej analizy jest m.in. zidentyfikowanie umiarkowanej, dodatnią korelację pomiędzy dochodem a całkowitym stażem pracy, co jest silniejszym związkiem niż w przypadku wieku pracownika. Warto również zwrócić uwagę na fakt, iż maksymalne wartości współczynników nie przekraczają progu silnej korelacji.
 
 # Wnioskowanie Statystyczne
 
